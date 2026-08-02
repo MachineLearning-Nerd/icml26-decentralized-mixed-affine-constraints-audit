@@ -1,0 +1,12 @@
+{
+  "claim_id": "C2",
+  "verdict_target": "VERIFIED",
+  "source": "Theorem 4.6, Table 1, Appendix J",
+  "scope": "Smooth strongly convex full problem (P), with coupled A, local C, shared Ctilde, and consensus W constraints all present.",
+  "contract": [
+    "Construct K=diag(B1,B2) using Appendix J's exact block structures.",
+    "Recompute kappa_tilde_AC and kappahat_Ctilde-transpose from Definition 4.2 and Definition 3.4.",
+    "Execute both Chebyshev operator paths and measure first-hit primitive counts over formula-independent horizons.",
+    "Require the additive model to outperform a multiplicative alternative and require both dropped-block controls to fail."
+  ]
+}

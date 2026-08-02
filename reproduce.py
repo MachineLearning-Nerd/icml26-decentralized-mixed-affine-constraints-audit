@@ -13,6 +13,7 @@ from pathlib import Path
 import numpy as np
 
 from research.round1 import run_round1
+from research.round2 import run_round2
 
 
 ROOT = Path(__file__).resolve().parent
@@ -42,7 +43,13 @@ def main() -> None:
     started = time.perf_counter()
     baseline = verify_baseline()
     round1 = run_round1()
-    checks = round1.pop("checks")
+    round1_checks = round1.pop("checks")
+    round2 = run_round2()
+    round2_checks = round2.pop("checks")
+    checks = {
+        **{f"round1.{name}": passed for name, passed in round1_checks.items()},
+        **{f"round2.{name}": passed for name, passed in round2_checks.items()},
+    }
     failed = [name for name, passed in checks.items() if not passed]
 
     result = {
@@ -64,6 +71,7 @@ def main() -> None:
         },
         "baseline_regression": baseline,
         "round1": round1,
+        "round2": round2,
         "checks": checks,
         "runtime_seconds": time.perf_counter() - started,
     }
@@ -72,7 +80,7 @@ def main() -> None:
     print("EVIDENCE_JSON_END")
     if failed:
         raise SystemExit(f"EVAL: FAIL — round-1 checks failed: {failed}")
-    print("EVAL: PASS — exact APAPC and shared-variable communication checks verified")
+    print("EVAL: PASS — exact APAPC and full mixed additive-work checks verified")
 
 
 if __name__ == "__main__":
