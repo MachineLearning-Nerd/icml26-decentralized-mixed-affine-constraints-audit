@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "title": "Repro — Mixed Affine Decentralized Optimization",
+  "emoji": "🔬",
+  "space_id": "DineshAI/KS6RbZMt8L",
+  "paper": "arXiv:2602.04479",
+  "tags": ["icml2026-repro", "paper-KS6RbZMt8L", "exact-algorithms"],
+  "updated_at": "2026-08-02T00:00:00+00:00",
+  "root": {
+    "slug": "current",
+    "title": "Current verification",
+    "file": "pages/current/index.md",
+    "children": [
+      {"slug": "current-claim-1", "title": "Claim 1 — APAPC communication complexity", "file": "pages/current/claim-1.md", "children": []},
+      {"slug": "current-claim-2", "title": "Claim 2 — full mixed bound", "file": "pages/current/claim-2.md", "children": []},
+      {"slug": "current-claim-3", "title": "Claim 3 — Gradient Sliding", "file": "pages/current/claim-3.md", "children": []},
+      {"slug": "current-claim-4", "title": "Claim 4 — learning applications", "file": "pages/current/claim-4.md", "children": []},
+      {"slug": "current-claim-5", "title": "Claim 5 — APAPC core", "file": "pages/current/claim-5.md", "children": []},
+      {"slug": "current-verification", "title": "Current verification run", "file": "pages/current/verification.md", "children": []},
+      {"slug": "current-visibility", "title": "Evidence visibility matrix", "file": "pages/current/visibility.md", "children": []},
+      {
+        "slug": "historical-index",
+        "title": "Historical rejected baseline",
+        "file": "pages/index.md",
+        "children": [
+          {"slug": "overview", "title": "Historical rejected baseline — overview", "file": "pages/overview/page.md", "children": []},
+          {"slug": "claims", "title": "Historical rejected baseline — claims", "file": "pages/claims/page.md", "children": []},
+          {"slug": "evidence", "title": "Historical rejected baseline — evidence", "file": "pages/evidence/page.md", "children": []},
+          {"slug": "conclusion", "title": "Historical rejected baseline — conclusion", "file": "pages/conclusion/page.md", "children": []},
+          {"slug": "verification-run", "title": "Historical rejected baseline — verification run", "file": "pages/verification-run/page.md", "children": []}
+        ]
+      }
+    ]
+  },
+  "agent_view_tokens": 12000,
+  "revision": "candidate-current-verification"
+}

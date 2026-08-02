@@ -16,7 +16,12 @@ from research.round1 import run_round1
 from research.round2 import run_round2
 from research.round3 import run_round3
 from research.round4 import run_round4
-from research.publication import build_publication, validate_embedded_evidence
+from research.publication import (
+    build_publication,
+    validate_embedded_evidence,
+    validate_materialized_artifacts,
+    validate_space_candidate,
+)
 
 
 ROOT = Path(__file__).resolve().parent
@@ -56,6 +61,10 @@ def main() -> None:
     embedded_checks = validate_embedded_evidence(round1, round2, round3, round4)
     publication = build_publication(round1, round2, round3, round4)
     publication_checks = publication.pop("checks")
+    materialized = validate_materialized_artifacts(publication)
+    materialized_checks = materialized.pop("checks")
+    space_candidate = validate_space_candidate()
+    space_checks = space_candidate.pop("checks")
     checks = {
         **{f"round1.{name}": passed for name, passed in round1_checks.items()},
         **{f"round2.{name}": passed for name, passed in round2_checks.items()},
@@ -63,6 +72,8 @@ def main() -> None:
         **{f"round4.{name}": passed for name, passed in round4_checks.items()},
         **{f"embedded.{name}": passed for name, passed in embedded_checks.items()},
         **{f"publication.{name}": passed for name, passed in publication_checks.items()},
+        **{f"materialized.{name}": passed for name, passed in materialized_checks.items()},
+        **{f"space_candidate.{name}": passed for name, passed in space_checks.items()},
     }
     failed = [name for name, passed in checks.items() if not passed]
 
@@ -89,6 +100,8 @@ def main() -> None:
         "round3": round3,
         "round4": round4,
         "publication": publication,
+        "materialized_artifact_audit": materialized,
+        "space_candidate_audit": space_candidate,
         "checks": checks,
         "runtime_seconds": time.perf_counter() - started,
     }

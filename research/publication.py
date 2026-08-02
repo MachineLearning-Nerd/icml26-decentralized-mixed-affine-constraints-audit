@@ -5,6 +5,9 @@ from __future__ import annotations
 import html
 import json
 import math
+import re
+import subprocess
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -199,3 +202,121 @@ def build_publication(round1: dict, round2: dict, round3: dict, round4: dict) ->
         ),
     }
     return {"figures": figures, "checks": checks}
+
+
+def validate_materialized_artifacts(publication: dict) -> dict:
+    report_path = ROOT / "reports/full-reproduction/report.md"
+    readme_path = ROOT / "README.md"
+    notebook_path = ROOT / "notebooks/reproduction.py"
+    report = report_path.read_text(encoding="utf-8")
+    readme = readme_path.read_text(encoding="utf-8")
+    image_links = re.findall(r"!\[[^]]*\]\((images/[^)]+)\)", report)
+    materialized_figures = {}
+    xml_roots = []
+    for name in publication["figures"]:
+        path = report_path.parent / "images" / name
+        materialized_figures[name] = path.read_text(encoding="utf-8").strip()
+        xml_roots.append(ET.fromstring(materialized_figures[name]).tag)
+    marimo = subprocess.run(
+        ["marimo", "check", str(notebook_path)],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    raw_links = re.findall(r"\]\((\.\./\.\./\.openresearch/artifacts/[^)]+)\)", report)
+    checks = {
+        "all_five_report_images_are_linked": sorted(image_links)
+        == sorted(f"images/{name}" for name in publication["figures"]),
+        "materialized_figures_equal_hf_generated_payloads": all(
+            materialized_figures[name] == value
+            for name, value in publication["figures"].items()
+        ),
+        "all_materialized_figures_parse_as_svg_xml": all(
+            root.endswith("svg") for root in xml_roots
+        ),
+        "all_report_raw_links_resolve": len(raw_links) == 15
+        and all((report_path.parent / link).resolve().is_file() for link in raw_links),
+        "readme_leads_with_reproduction": readme.startswith("# Reproduction:"),
+        "readme_contains_exact_fixed_command": "uv sync --frozen && uv run --frozen python reproduce.py" in readme,
+        "readme_accounts_for_main": "Not run as an experiment (publication surface)" in readme,
+        "marimo_check_passes": marimo.returncode == 0,
+    }
+    return {
+        "report": str(report_path.relative_to(ROOT)),
+        "notebook": str(notebook_path.relative_to(ROOT)),
+        "marimo_command": f"marimo check {notebook_path.relative_to(ROOT)}",
+        "marimo_exit_code": marimo.returncode,
+        "marimo_stdout": marimo.stdout,
+        "marimo_stderr": marimo.stderr,
+        "image_links": image_links,
+        "raw_links": raw_links,
+        "checks": checks,
+    }
+
+
+def logbook_files(node: dict) -> list[str]:
+    return [node["file"], *sum((logbook_files(child) for child in node["children"]), [])]
+
+
+def validate_space_candidate() -> dict:
+    candidate_root = ROOT / "space_candidate"
+    logbook = json.loads((candidate_root / "logbook.json").read_text(encoding="utf-8"))
+    manifest_lines = (
+        ROOT / ".openresearch/artifacts/historical_judged_space/MANIFEST.sha256"
+    ).read_text(encoding="utf-8").splitlines()
+    historical_paths = {line.split("  ", 1)[1] for line in manifest_lines if "  " in line}
+    files = logbook_files(logbook["root"])
+    current_files = [name for name in files if name.startswith("pages/current/")]
+    historical_files = [name for name in files if not name.startswith("pages/current/")]
+    current_text = "\n".join(
+        (candidate_root / name).read_text(encoding="utf-8") for name in current_files
+    )
+    claim_pages = [
+        (candidate_root / f"pages/current/claim-{index}.md").read_text(encoding="utf-8")
+        for index in range(1, 6)
+    ]
+    visibility = (candidate_root / "pages/current/visibility.md").read_text(
+        encoding="utf-8"
+    )
+    checks = {
+        "space_id_is_exact_target": logbook["space_id"] == "DineshAI/KS6RbZMt8L",
+        "canonical_root_is_current": logbook["root"]["file"] == "pages/current/index.md",
+        "historical_tree_has_exact_label": any(
+            child["title"] == "Historical rejected baseline"
+            for child in logbook["root"]["children"]
+        ),
+        "all_current_logbook_pages_exist": len(current_files) == 8
+        and all((candidate_root / name).is_file() for name in current_files),
+        "all_historical_page_paths_are_protected": all(
+            name in historical_paths for name in historical_files
+        ),
+        "all_claim_pages_expose_code_raw_checker_and_control": all(
+            ("source]" in page.lower() or "executable" in page.lower())
+            and "raw json" in page.lower()
+            and "checker" in page.lower()
+            and "control" in page.lower()
+            for page in claim_pages
+        ),
+        "all_claim_pages_have_status_and_confidence": all(
+            "Verdict: VERIFIED" in page and "Confidence:" in page for page in claim_pages
+        ),
+        "visibility_matrix_has_five_complete_rows": sum(
+            line.startswith("| ") and "| VERIFIED |" in line
+            for line in visibility.splitlines()
+        ) == 5,
+        "historical_baseline_is_not_called_current": "supersedes" in current_text
+        and "Historical rejected baseline" in current_text,
+        "candidate_pages_contain_no_secret_markers": not any(
+            marker in current_text.lower()
+            for marker in ("hf_token", "api_key", "authorization:", "bearer ")
+        ),
+    }
+    return {
+        "logbook": "space_candidate/logbook.json",
+        "canonical_entrypoint": logbook["root"]["file"],
+        "reachable_current_files": current_files,
+        "reachable_historical_files": historical_files,
+        "protected_historical_path_count": len(historical_paths),
+        "checks": checks,
+    }
