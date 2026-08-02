@@ -511,10 +511,10 @@ def validate_release_candidate() -> dict:
         == "DineshAI/KS6RbZMt8L",
         "allowlist_pins_exact_judged_revision": allowlist["protected_revision"]
         == "ca7d5e1e68417ee85909ac717f8b08f5abe952c9",
-        "status_correction_pins_exact_publication_parent": allowlist[
+        "high_accuracy_release_pins_exact_publication_parent": allowlist[
             "publication_parent_revision"
         ]
-        == "cf6997e179e72435d967de1d26ef51a924ceff91",
+        == "cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe",
         "all_upload_sources_exist": all(path.is_file() for path in source_paths),
         "all_upload_sources_are_utf8_text": all(
             "\x00" not in path.read_text(encoding="utf-8") for path in source_paths

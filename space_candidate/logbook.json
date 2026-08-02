@@ -5,7 +5,7 @@
   "space_id": "DineshAI/KS6RbZMt8L",
   "paper": "arXiv:2602.04479",
   "tags": ["icml2026-repro", "paper-KS6RbZMt8L", "exact-algorithms"],
-  "updated_at": "2026-08-02T10:24:00+00:00",
+  "updated_at": "2026-08-02T10:40:12+00:00",
   "root": {
     "slug": "current",
     "title": "Current verification",
@@ -35,5 +35,5 @@
     ]
   },
   "agent_view_tokens": 12000,
-  "revision": "claim3-high-accuracy-release-candidate"
+  "revision": "claim3-high-accuracy-parent-locked-release"
 }

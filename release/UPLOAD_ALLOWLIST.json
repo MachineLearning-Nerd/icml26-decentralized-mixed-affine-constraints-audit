@@ -1,7 +1,7 @@
 {
   "space_id": "DineshAI/KS6RbZMt8L",
   "protected_revision": "ca7d5e1e68417ee85909ac717f8b08f5abe952c9",
-  "publication_parent_revision": "cf6997e179e72435d967de1d26ef51a924ceff91",
+  "publication_parent_revision": "cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe",
   "policy": "text-only status correction; historical protected files and scientific evidence remain unchanged",
   "files": [
     {"source": "space_candidate/logbook.json", "target": "logbook.json"},
