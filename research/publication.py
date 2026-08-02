@@ -224,6 +224,24 @@ def validate_materialized_artifacts(publication: dict) -> dict:
         text=True,
         check=False,
     )
+    exported_notebook = Path("/tmp/reproduction-notebook.html")
+    marimo_export = subprocess.run(
+        [
+            "marimo",
+            "export",
+            "html",
+            str(notebook_path),
+            "-o",
+            str(exported_notebook),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check_is_unsupported = (
+        marimo.returncode == 2 and "No such command 'check'" in marimo.stderr
+    )
     raw_links = re.findall(r"\]\((\.\./\.\./\.openresearch/artifacts/[^)]+)\)", report)
     checks = {
         "all_five_report_images_are_linked": sorted(image_links)
@@ -240,7 +258,13 @@ def validate_materialized_artifacts(publication: dict) -> dict:
         "readme_leads_with_reproduction": readme.startswith("# Reproduction:"),
         "readme_contains_exact_fixed_command": "uv sync --frozen && uv run --frozen python reproduce.py" in readme,
         "readme_accounts_for_main": "Not run as an experiment (publication surface)" in readme,
-        "marimo_check_passes": marimo.returncode == 0,
+        "marimo_check_or_documented_export_fallback_passes": marimo.returncode == 0
+        or (
+            check_is_unsupported
+            and marimo_export.returncode == 0
+            and exported_notebook.is_file()
+            and exported_notebook.stat().st_size > 1000
+        ),
     }
     return {
         "report": str(report_path.relative_to(ROOT)),
@@ -249,6 +273,14 @@ def validate_materialized_artifacts(publication: dict) -> dict:
         "marimo_exit_code": marimo.returncode,
         "marimo_stdout": marimo.stdout,
         "marimo_stderr": marimo.stderr,
+        "marimo_check_supported": not check_is_unsupported,
+        "fallback_command": f"marimo export html {notebook_path.relative_to(ROOT)} -o {exported_notebook}",
+        "fallback_exit_code": marimo_export.returncode,
+        "fallback_stdout": marimo_export.stdout,
+        "fallback_stderr": marimo_export.stderr,
+        "fallback_output_bytes": exported_notebook.stat().st_size
+        if exported_notebook.is_file()
+        else 0,
         "image_links": image_links,
         "raw_links": raw_links,
         "checks": checks,

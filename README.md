@@ -19,6 +19,8 @@ uv sync --frozen && uv run --frozen python reproduce.py
 
 All research runs used Hugging Face `cpu-upgrade`; GPU use was forbidden. The generated tasks are deliberately moderate synthetic benchmarks, not production federated deployments. Claim 3 remains MEDIUM confidence because paper Algorithm 2 line 12 differs from the Lan recurrence invoked by Appendix E. Claim 4 remains MEDIUM confidence because Appendix B's MTL example is coupled-only; the node-specific affine mask is a disclosed extension.
 
+Notebook validation note: the pinned marimo 0.15.5 CLI does not provide the requested `marimo check` subcommand. The cumulative verifier records that unsupported command and requires the supported `marimo export html notebooks/reproduction.py` path to parse and execute the notebook successfully instead; the lock is not changed between experiment nodes.
+
 ## Experiment log
 
 | Branch / experiment | Purpose | Exact run command | Assessment / outcome | Compute |

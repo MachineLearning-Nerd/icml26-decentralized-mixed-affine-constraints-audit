@@ -83,6 +83,8 @@ Each control removes an essential algorithm update or application equation. None
 
 The numerical studies are finite and use path graphs and synthetic convex tasks. They cannot alone prove universal big-O statements. The Appendix G certificate reconstructs the quantified oracle argument but is not machine-checked by a proof assistant. No production federation, privacy protocol, or real private dataset is claimed.
 
+The pinned marimo 0.15.5 CLI has no `check` subcommand. The release gate attempts it, records the unsupported-command error, and then requires a successful supported HTML export that parses and executes the notebook. The fixed lock is not mutated to manufacture a different validation environment.
+
 ## Assessment
 
 All five claims have reproducible evidence and non-vacuous controls. Claims 1–4 retain material scope or interpretation risks; Claim 5 has the strongest direct algorithm-identity evidence. The candidate should improve substantially over the toy baseline, but only the live evaluator can change the 5/10 score.
