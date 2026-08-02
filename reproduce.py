@@ -57,7 +57,7 @@ def main() -> None:
     failed = [name for name, passed in checks.items() if not passed]
 
     result = {
-        "experiment": "exact_gradient_sliding_nonsmooth_mixed_constraints",
+        "experiment": "source_consistent_lan_gradient_sliding_interpretation",
         "git_sha": git_sha(),
         "fixed_run_command": RUN_COMMAND,
         "environment": {
@@ -84,7 +84,7 @@ def main() -> None:
     print(json.dumps(result, indent=2, sort_keys=True))
     print("EVIDENCE_JSON_END")
     if failed:
-        raise SystemExit(f"EVAL: FAIL — round-1 checks failed: {failed}")
+        raise SystemExit(f"EVAL: FAIL — cumulative checks failed: {failed}")
     print("EVAL: PASS — smooth APAPC and nonsmooth Gradient Sliding checks verified")
 
 

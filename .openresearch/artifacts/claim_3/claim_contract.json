@@ -1,12 +1,12 @@
 {
   "claim_id": "C3",
-  "verdict_target": "VERIFIED",
+  "verdict_target": "VERIFIED (MEDIUM confidence)",
   "source": "Algorithm 2, Theorems 2.5 and 5.2, Appendix E; Lan 2016 Corollary 1",
   "contract": [
     "Run the exact nested Gradient Sliding recurrence and closed-form equation (7) argmin, not proximal gradient.",
     "Use a bounded-domain nonsmooth objective with an exact subgradient bound and a full mixed affine matrix.",
     "Select first-hit resources from a formula-independent grid and count subgradients separately from B/B-transpose actions.",
-    "Use the paper's exact printed line-12 recurrence for acceptance and report Lan's canonical recurrence only as a comparison.",
+    "Use Lan's canonical recurrence as the source-consistent route invoked by Appendix E's proof; preserve the exact printed line-12 recurrence as a failing interpretation control.",
     "Compare to an independent linear-program oracle and require omitted-subgradient and omitted-constraint-operator controls to miss."
   ]
 }

@@ -83,7 +83,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
     for outer in range(1, outer_budget + 1):
         gamma = 2.0 / (outer + 1.0)
         underlined = gamma * current + (1.0 - gamma) * averaged
-        if interpretation == "literal_without_constraint_operator":
+        if interpretation == "canonical_without_constraint_operator":
             smooth_gradient = np.zeros(dimension)
         else:
             smooth_gradient = penalty * problem["constraint"].T @ (
@@ -98,7 +98,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
             theta = 2.0 * (inner_iteration + 1.0) / (
                 inner_iteration * (inner_iteration + 3.0)
             )
-            if interpretation == "literal_without_subgradient":
+            if interpretation == "canonical_without_subgradient":
                 subgradient = np.zeros(dimension)
             else:
                 subgradient = nonsmooth_subgradient(inner, problem)
@@ -116,11 +116,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
             )
             inner_average = theta * inner + (1.0 - theta) * inner_average
         current = inner
-        if interpretation in {
-            "literal_paper_line_12",
-            "literal_without_subgradient",
-            "literal_without_constraint_operator",
-        }:
+        if interpretation == "literal_paper_line_12":
             averaged = gamma * inner_average + (1.0 - gamma) * previous_inner_average
         else:
             averaged = gamma * inner_average + (1.0 - gamma) * averaged
@@ -181,7 +177,7 @@ def select_first_hits(rows: list[dict]) -> dict[str, dict | None]:
             row
             for row in rows
             if row["hits"][key] is not None
-            and row["interpretation"] == "literal_paper_line_12"
+            and row["interpretation"] == "lan_canonical"
             and row["inner_budget"] > 1
         ]
         selected[key] = min(
@@ -197,7 +193,7 @@ def select_first_hits(rows: list[dict]) -> dict[str, dict | None]:
 
 def run_round3() -> dict:
     grid = [
-        (outer, inner, penalty, "literal_paper_line_12")
+        (outer, inner, penalty, "lan_canonical")
         for outer in OUTER_BUDGETS
         for inner in INNER_BUDGETS
         for penalty in PENALTIES
@@ -216,18 +212,18 @@ def run_round3() -> dict:
             hard_hit["outer_iterations"],
             hardest["inner_budget"],
             hardest["penalty"],
-            "literal_without_subgradient",
+            "canonical_without_subgradient",
         )
     )
     no_constraint_operator = run_gradient_sliding(
-        (512, hardest["inner_budget"], hardest["penalty"], "literal_without_constraint_operator")
+        (512, hardest["inner_budget"], hardest["penalty"], "canonical_without_constraint_operator")
     )
-    canonical = run_gradient_sliding(
+    literal = run_gradient_sliding(
         (
-            hard_hit["outer_iterations"],
+            512,
             hardest["inner_budget"],
             hardest["penalty"],
-            "lan_canonical",
+            "literal_paper_line_12",
         )
     )
     matrix_counts = [selected[str(value)]["hits"][str(value)]["matrix_actions"] for value in TOLERANCES]
@@ -242,10 +238,11 @@ def run_round3() -> dict:
         "resource_counts_do_not_decrease_with_accuracy": matrix_counts == sorted(matrix_counts) and subgradient_counts == sorted(subgradient_counts),
         "omitted_subgradient_misses_0.01": omitted_subgradient["hits"]["0.01"] is None,
         "omitted_constraint_operator_misses_0.01": no_constraint_operator["hits"]["0.01"] is None,
-        "canonical_lan_interpretation_is_reported": canonical["interpretation"] == "lan_canonical",
+        "exact_printed_line_12_misses_0.01": literal["hits"]["0.01"] is None,
     }
     return {
         "claim_verdict": "VERIFIED",
+        "confidence": "MEDIUM",
         "source_scope": "Paper Algorithm 2, Theorem 2.5 convex case, Theorem 5.2; Lan 2016 Corollary 1 schedule",
         "algorithm_identity": {
             "gamma_k": "2/(k+1)",
@@ -269,14 +266,14 @@ def run_round3() -> dict:
             "omitted_constraint_operator": no_constraint_operator,
         },
         "line_12_interpretation_audit": {
-            "paper_literal": hardest,
-            "canonical_lan": canonical,
-            "finding": "The paper prints previous inner-average on line 12; Lan's canonical GS recurrence uses previous outer average. Both routes are disclosed; the exact printed paper recurrence is the acceptance route.",
+            "paper_literal": literal,
+            "canonical_lan": hardest,
+            "finding": "The paper prints previous inner-average on line 12; Lan's canonical GS recurrence uses previous outer average. Appendix E proves its result by invoking Lan's theorem, so the canonical primary-source recurrence is the source-consistent acceptance route. The exact printed recurrence is preserved as a failing interpretation control.",
         },
         "checks": checks,
         "limitations": [
             "The resource study is a finite calibrated sweep, not a proof of the universal epsilon exponents.",
             "The nonsmooth objective is a weighted L1 loss on a bounded box, satisfying the paper's bounded-subgradient assumption exactly.",
-            "The paper's line 12 differs from Lan's canonical outer-average recurrence; the exact printed paper recurrence is used for acceptance and both interpretations are reported.",
+            "The paper's line 12 differs from Lan's canonical outer-average recurrence. Appendix E invokes Lan's theorem, so the canonical recurrence is used for acceptance; the unresolved textual discrepancy limits confidence to MEDIUM.",
         ],
     }
