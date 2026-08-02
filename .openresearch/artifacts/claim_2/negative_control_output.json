@@ -1,0 +1,104 @@
+{
+  "drop_coupled_local": {
+    "ac_scale": 16,
+    "block_chebyshev_degrees": [
+      7,
+      7
+    ],
+    "final_relative_error": 0.08720693546730843,
+    "final_relative_residual": 0.07270178462737295,
+    "graph_chebyshev_degree": 6,
+    "hits": {
+      "0.001": null,
+      "1e-06": null
+    },
+    "kappa_f": 64,
+    "kkt_feasibility": 7.969765966820547e-16,
+    "kkt_stationarity": 3.660270233956417e-15,
+    "measured_kappa_W": 25.27414236908816,
+    "measured_kappa_tilde_AC": 10.966913905717838,
+    "measured_kappahat_Ctilde_transpose": 11.593480717664008,
+    "mode": "drop_coupled_local",
+    "nodes": 8,
+    "shared_scale": 16,
+    "snapshots": [
+      {
+        "communications": 21504,
+        "horizon": 128,
+        "relative_error": 0.08720012486330488,
+        "relative_residual": 0.07271312205649873
+      },
+      {
+        "communications": 86016,
+        "horizon": 512,
+        "relative_error": 0.08720693546730811,
+        "relative_residual": 0.07270178462737291
+      },
+      {
+        "communications": 344064,
+        "horizon": 2048,
+        "relative_error": 0.08720693546730843,
+        "relative_residual": 0.07270178462737295
+      },
+      {
+        "communications": 1376256,
+        "horizon": 8192,
+        "relative_error": 0.08720693546730843,
+        "relative_residual": 0.07270178462737295
+      }
+    ],
+    "structural_operator_error": 2.4756977713400195e-15
+  },
+  "drop_shared": {
+    "ac_scale": 16,
+    "block_chebyshev_degrees": [
+      7,
+      7
+    ],
+    "final_relative_error": 0.015460043406971945,
+    "final_relative_residual": 0.026748859558629625,
+    "graph_chebyshev_degree": 6,
+    "hits": {
+      "0.001": null,
+      "1e-06": null
+    },
+    "kappa_f": 64,
+    "kkt_feasibility": 7.969765966820547e-16,
+    "kkt_stationarity": 3.660270233956417e-15,
+    "measured_kappa_W": 25.27414236908816,
+    "measured_kappa_tilde_AC": 10.966913905717838,
+    "measured_kappahat_Ctilde_transpose": 11.593480717664008,
+    "mode": "drop_shared",
+    "nodes": 8,
+    "shared_scale": 16,
+    "snapshots": [
+      {
+        "communications": 21504,
+        "horizon": 128,
+        "relative_error": 0.015461057563169954,
+        "relative_residual": 0.026750405936510405
+      },
+      {
+        "communications": 86016,
+        "horizon": 512,
+        "relative_error": 0.015460043406971992,
+        "relative_residual": 0.026748859558629816
+      },
+      {
+        "communications": 344064,
+        "horizon": 2048,
+        "relative_error": 0.01546004340697186,
+        "relative_residual": 0.02674885955862938
+      },
+      {
+        "communications": 1376256,
+        "horizon": 8192,
+        "relative_error": 0.015460043406971945,
+        "relative_residual": 0.026748859558629625
+      }
+    ],
+    "structural_operator_error": 2.4756977713400195e-15
+  }
+}
+
+

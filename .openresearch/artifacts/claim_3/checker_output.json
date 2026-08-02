@@ -1,0 +1,161 @@
+{
+  "git_sha": "97f37fa87c0075d0fec7113e9d6901287fcbb553",
+  "fixed_run_command": "uv sync --frozen && uv run --frozen python reproduce.py",
+  "compute": {
+    "actual_logical_cpus": 64,
+    "estimated_cores": 16,
+    "gpu_allowed": false,
+    "requested_backend": "huggingface",
+    "requested_flavor": "cpu-upgrade"
+  },
+  "environment": {
+    "manager": "uv",
+    "numpy": "2.3.2",
+    "python": "3.12.12",
+    "venv": "/repo/.venv"
+  },
+  "runtime_seconds": 36.26669124397449,
+  "checks": {
+    "round3.all_three_accuracy_levels_have_first_hits": true,
+    "round3.bounded_subgradient_assumption_holds": true,
+    "round3.exact_printed_line_12_misses_0.01": true,
+    "round3.formula_independent_grid_contains_0.01_first_hit": true,
+    "round3.independent_lp_is_accurate": true,
+    "round3.matrix_and_subgradient_counts_are_separate": true,
+    "round3.omitted_constraint_operator_misses_0.01": true,
+    "round3.omitted_subgradient_misses_0.01": true,
+    "round3.resource_counts_do_not_decrease_with_accuracy": true,
+    "round3.rhs_is_in_constraint_range": true
+  },
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM",
+  "independent_lp": {
+    "equality_residual": 1.2291051413029514e-15,
+    "objective": 0.9086169401003481,
+    "objective_recalculation_error": 1.1102230246251565e-16
+  },
+  "selected_first_hits": {
+    "0.01": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 0.009059923059371576,
+      "final_objective_gap_absolute": 0.0009214466410623068,
+      "hits": {
+        "0.01": {
+          "constraint_residual": 0.00902341159330733,
+          "matrix_actions": 280,
+          "objective_gap_absolute": 0.009952673363158193,
+          "outer_iterations": 140,
+          "subgradient_calls": 8960
+        },
+        "0.02": {
+          "constraint_residual": 0.009761613335735725,
+          "matrix_actions": 150,
+          "objective_gap_absolute": 0.019953641584102955,
+          "outer_iterations": 75,
+          "subgradient_calls": 4800
+        },
+        "0.05": {
+          "constraint_residual": 0.04795518086426395,
+          "matrix_actions": 28,
+          "objective_gap_absolute": 0.029091318955408396,
+          "outer_iterations": 14,
+          "subgradient_calls": 896
+        }
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "lan_canonical",
+      "matrix_actions": 512,
+      "outer_budget": 256,
+      "penalty": 32,
+      "subgradient_calls": 16384
+    },
+    "0.02": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 0.017213139895476064,
+      "final_objective_gap_absolute": 0.015582586399705556,
+      "hits": {
+        "0.01": null,
+        "0.02": {
+          "constraint_residual": 0.01988915081824103,
+          "matrix_actions": 72,
+          "objective_gap_absolute": 0.019564575396462724,
+          "outer_iterations": 36,
+          "subgradient_calls": 2304
+        },
+        "0.05": {
+          "constraint_residual": 0.047468184314599496,
+          "matrix_actions": 28,
+          "objective_gap_absolute": 0.02627821831245203,
+          "outer_iterations": 14,
+          "subgradient_calls": 896
+        }
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "lan_canonical",
+      "matrix_actions": 128,
+      "outer_budget": 64,
+      "penalty": 16,
+      "subgradient_calls": 4096
+    },
+    "0.05": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 0.047010139210900886,
+      "final_objective_gap_absolute": 0.03457804322426705,
+      "hits": {
+        "0.01": null,
+        "0.02": null,
+        "0.05": {
+          "constraint_residual": 0.049248186579808846,
+          "matrix_actions": 28,
+          "objective_gap_absolute": 0.026099376893842785,
+          "outer_iterations": 14,
+          "subgradient_calls": 224
+        }
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 16,
+      "interpretation": "lan_canonical",
+      "matrix_actions": 32,
+      "outer_budget": 16,
+      "penalty": 16,
+      "subgradient_calls": 256
+    }
+  }
+}
+
+

@@ -1,0 +1,151 @@
+{
+  "negative_control_definitions": {
+    "HFL": "independent local models without consensus",
+    "MTL": "yj fixed to zero after dropping yj=sum_i Qij xi",
+    "VFL": "unconstrained representations unrelated to feature-party mappings"
+  },
+  "HFL": [
+    {
+      "seed": 202608020,
+      "full_consensus_residual": 1.0234725025044484e-14,
+      "omitted_consensus_residual": 1.972832614669637
+    },
+    {
+      "seed": 202608021,
+      "full_consensus_residual": 9.703804341362442e-15,
+      "omitted_consensus_residual": 1.742829044960158
+    },
+    {
+      "seed": 202608022,
+      "full_consensus_residual": 7.14826987258185e-15,
+      "omitted_consensus_residual": 2.270570080897567
+    },
+    {
+      "seed": 202608023,
+      "full_consensus_residual": 1.987144633545045e-14,
+      "omitted_consensus_residual": 2.710828741944781
+    },
+    {
+      "seed": 202608024,
+      "full_consensus_residual": 8.952343661666331e-15,
+      "omitted_consensus_residual": 2.457665975025128
+    },
+    {
+      "seed": 202608025,
+      "full_consensus_residual": 1.3448852864155462e-14,
+      "omitted_consensus_residual": 1.9804515206774307
+    },
+    {
+      "seed": 202608026,
+      "full_consensus_residual": 1.4237300126497044e-14,
+      "omitted_consensus_residual": 2.446491207015442
+    },
+    {
+      "seed": 202608027,
+      "full_consensus_residual": 5.776503106635771e-15,
+      "omitted_consensus_residual": 2.107944333915374
+    }
+  ],
+  "VFL": [
+    {
+      "seed": 202608020,
+      "full_representation_residual": 2.0350847328605977e-13,
+      "full_top_consensus_residual": 2.112518414654649e-14,
+      "omitted_representation_residual": 31.822978975227688
+    },
+    {
+      "seed": 202608021,
+      "full_representation_residual": 6.928678021737027e-14,
+      "full_top_consensus_residual": 1.2734698495886674e-14,
+      "omitted_representation_residual": 43.01624207494882
+    },
+    {
+      "seed": 202608022,
+      "full_representation_residual": 7.378854099868443e-14,
+      "full_top_consensus_residual": 1.2493832543323435e-14,
+      "omitted_representation_residual": 35.05524020404515
+    },
+    {
+      "seed": 202608023,
+      "full_representation_residual": 5.053387153872814e-14,
+      "full_top_consensus_residual": 6.814997123615466e-15,
+      "omitted_representation_residual": 22.979471663265638
+    },
+    {
+      "seed": 202608024,
+      "full_representation_residual": 4.5777123695634966e-14,
+      "full_top_consensus_residual": 6.756872419223709e-15,
+      "omitted_representation_residual": 26.695084592777746
+    },
+    {
+      "seed": 202608025,
+      "full_representation_residual": 5.655363870763869e-14,
+      "full_top_consensus_residual": 8.136124587573777e-15,
+      "omitted_representation_residual": 34.42849317210984
+    },
+    {
+      "seed": 202608026,
+      "full_representation_residual": 7.79679759674693e-14,
+      "full_top_consensus_residual": 9.699054745056637e-15,
+      "omitted_representation_residual": 37.8882037657968
+    },
+    {
+      "seed": 202608027,
+      "full_representation_residual": 7.24394149973835e-14,
+      "full_top_consensus_residual": 4.93518798514289e-15,
+      "omitted_representation_residual": 31.39074438609558
+    }
+  ],
+  "MTL": [
+    {
+      "seed": 202608020,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 2.5314918222038956
+    },
+    {
+      "seed": 202608021,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 4.895236236372297
+    },
+    {
+      "seed": 202608022,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 3.9343330370438725
+    },
+    {
+      "seed": 202608023,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 5.4508477550119885
+    },
+    {
+      "seed": 202608024,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 2.925570691392499
+    },
+    {
+      "seed": 202608025,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 3.3226882639707513
+    },
+    {
+      "seed": 202608026,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 2.5420969946156537
+    },
+    {
+      "seed": 202608027,
+      "full_y_definition_residual": 0,
+      "full_local_constraint_residual": 0,
+      "dropped_y_coupling_residual": 5.653452128551686
+    }
+  ]
+}
+
+

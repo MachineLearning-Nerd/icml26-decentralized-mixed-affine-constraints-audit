@@ -1,0 +1,66 @@
+{
+  "git_sha": "10f9caf9ef5c8c525eedf7ede1d93721bbe85420",
+  "fixed_run_command": "uv sync --frozen && uv run --frozen python reproduce.py",
+  "compute": {
+    "actual_logical_cpus": 64,
+    "estimated_cores": 16,
+    "gpu_allowed": false,
+    "requested_backend": "huggingface",
+    "requested_flavor": "cpu-upgrade"
+  },
+  "environment": {
+    "manager": "uv",
+    "numpy": "2.3.2",
+    "python": "3.12.12",
+    "venv": "/repo/.venv"
+  },
+  "runtime_seconds": 66.63048927788623,
+  "checks": {
+    "round4.all_learning_models_beat_zero_predictor_on_every_seed": true,
+    "round4.hfl_consensus_and_kkt_hold": true,
+    "round4.hfl_matches_centralized_oracle": true,
+    "round4.hfl_no_consensus_control_violates_constraint": true,
+    "round4.mtl_coupled_and_local_constraints_hold": true,
+    "round4.mtl_dropped_coupling_control_violates_definition": true,
+    "round4.mtl_group_lasso_kkt_holds": true,
+    "round4.vfl_matches_centralized_oracle": true,
+    "round4.vfl_mixed_constraints_and_kkt_hold": true,
+    "round4.vfl_omitted_representation_control_violates_constraint": true
+  },
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM",
+  "summaries": {
+    "hfl_improvement_over_no_consensus": {
+      "ci95_high": 0.7198456383038565,
+      "ci95_low": 0.4053361140064274,
+      "mean": 0.5625908761551419
+    },
+    "hfl_test_mse": {
+      "ci95_high": 0.5209557425072956,
+      "ci95_low": 0.4676253574038424,
+      "mean": 0.494290549955569
+    },
+    "mtl_improvement_over_independent": {
+      "ci95_high": 2.446444032989265,
+      "ci95_low": 0.8077205768506583,
+      "mean": 1.6270823049199619
+    },
+    "mtl_test_mse": {
+      "ci95_high": 1.307118235192743,
+      "ci95_low": 1.0170942967935859,
+      "mean": 1.1621062659931645
+    },
+    "vfl_improvement_over_dropped_party": {
+      "ci95_high": 9.488109611586724,
+      "ci95_low": 2.705236962874247,
+      "mean": 6.096673287230486
+    },
+    "vfl_test_mse": {
+      "ci95_high": 0.4005285161216369,
+      "ci95_low": 0.26297981583123803,
+      "mean": 0.3317541659764375
+    }
+  }
+}
+
+

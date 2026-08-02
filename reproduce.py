@@ -16,6 +16,7 @@ from research.round1 import run_round1
 from research.round2 import run_round2
 from research.round3 import run_round3
 from research.round4 import run_round4
+from research.publication import build_publication, validate_embedded_evidence
 
 
 ROOT = Path(__file__).resolve().parent
@@ -52,11 +53,16 @@ def main() -> None:
     round3_checks = round3.pop("checks")
     round4 = run_round4()
     round4_checks = round4.pop("checks")
+    embedded_checks = validate_embedded_evidence(round1, round2, round3, round4)
+    publication = build_publication(round1, round2, round3, round4)
+    publication_checks = publication.pop("checks")
     checks = {
         **{f"round1.{name}": passed for name, passed in round1_checks.items()},
         **{f"round2.{name}": passed for name, passed in round2_checks.items()},
         **{f"round3.{name}": passed for name, passed in round3_checks.items()},
         **{f"round4.{name}": passed for name, passed in round4_checks.items()},
+        **{f"embedded.{name}": passed for name, passed in embedded_checks.items()},
+        **{f"publication.{name}": passed for name, passed in publication_checks.items()},
     }
     failed = [name for name, passed in checks.items() if not passed]
 
@@ -82,6 +88,7 @@ def main() -> None:
         "round2": round2,
         "round3": round3,
         "round4": round4,
+        "publication": publication,
         "checks": checks,
         "runtime_seconds": time.perf_counter() - started,
     }

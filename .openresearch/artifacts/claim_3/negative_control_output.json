@@ -1,0 +1,145 @@
+{
+  "negative_controls": {
+    "omitted_constraint_operator": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 4.574718872370155,
+      "final_objective_gap_absolute": 0.902903310618582,
+      "hits": {
+        "0.01": null,
+        "0.02": null,
+        "0.05": null
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "canonical_without_constraint_operator",
+      "matrix_actions": 0,
+      "outer_budget": 512,
+      "penalty": 32,
+      "subgradient_calls": 32768
+    },
+    "omitted_nonsmooth_subgradient": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 0.00001969983707030495,
+      "final_objective_gap_absolute": 0.027541934710338722,
+      "hits": {
+        "0.01": null,
+        "0.02": null,
+        "0.05": {
+          "constraint_residual": 0.03917316278700104,
+          "matrix_actions": 44,
+          "objective_gap_absolute": 0.034730624161780965,
+          "outer_iterations": 22,
+          "subgradient_calls": 0
+        }
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "canonical_without_subgradient",
+      "matrix_actions": 280,
+      "outer_budget": 140,
+      "penalty": 32,
+      "subgradient_calls": 0
+    }
+  },
+  "line_12_interpretation_audit": {
+    "canonical_lan": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 0.009059923059371576,
+      "final_objective_gap_absolute": 0.0009214466410623068,
+      "hits": {
+        "0.01": {
+          "constraint_residual": 0.00902341159330733,
+          "matrix_actions": 280,
+          "objective_gap_absolute": 0.009952673363158193,
+          "outer_iterations": 140,
+          "subgradient_calls": 8960
+        },
+        "0.02": {
+          "constraint_residual": 0.009761613335735725,
+          "matrix_actions": 150,
+          "objective_gap_absolute": 0.019953641584102955,
+          "outer_iterations": 75,
+          "subgradient_calls": 4800
+        },
+        "0.05": {
+          "constraint_residual": 0.04795518086426395,
+          "matrix_actions": 28,
+          "objective_gap_absolute": 0.029091318955408396,
+          "outer_iterations": 14,
+          "subgradient_calls": 896
+        }
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "lan_canonical",
+      "matrix_actions": 512,
+      "outer_budget": 256,
+      "penalty": 32,
+      "subgradient_calls": 16384
+    },
+    "finding": "The paper prints previous inner-average on line 12; Lan's canonical GS recurrence uses previous outer average. Appendix E proves its result by invoking Lan's theorem, so the canonical primary-source recurrence is the source-consistent acceptance route. The exact printed recurrence is preserved as a failing interpretation control.",
+    "paper_literal": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 22,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.39198315480488904,
+        "maximum_observed_subgradient_norm": 0.39198315480488904,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 11.710247402904567,
+      "final_objective_gap_absolute": 0.8242650532427978,
+      "hits": {
+        "0.01": null,
+        "0.02": null,
+        "0.05": null
+      },
+      "independent_lp": {
+        "equality_residual": 1.2291051413029514e-15,
+        "objective": 0.9086169401003481,
+        "objective_recalculation_error": 1.1102230246251565e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "literal_paper_line_12",
+      "matrix_actions": 1024,
+      "outer_budget": 512,
+      "penalty": 32,
+      "subgradient_calls": 32768
+    }
+  }
+}
+
+

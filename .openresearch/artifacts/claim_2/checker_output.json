@@ -1,0 +1,79 @@
+{
+  "checks": {
+    "round1.all_27_cells_reach_1e-6": true,
+    "round1.all_kkt_oracles_below_1e-10": true,
+    "round1.degree_one_control_misses_exact_budget": true,
+    "round1.lower_bound_parameter_identities_hold": true,
+    "round1.lower_bound_path_spectral_audit_holds": true,
+    "round1.observed_constraint_exponent_near_half": true,
+    "round1.observed_graph_exponent_near_half": true,
+    "round1.observed_kappa_f_exponent_near_half": true,
+    "round1.omitted_corrector_misses_exact_budget": true,
+    "round2.additive_model_beats_multiplicative_model": true,
+    "round2.all_mixed_cells_reach_1e-6": true,
+    "round2.all_mixed_kkt_oracles_below_1e-9": true,
+    "round2.all_structural_operators_match_dense_below_1e-10": true,
+    "round2.both_operator_blocks_execute": true,
+    "round2.communication_counter_is_exact_block_sum": true,
+    "round2.dropped_coupled_local_control_fails": true,
+    "round2.dropped_shared_control_fails": true
+  },
+  "model_comparison": {
+    "additive_relative_rmse": 0.06018510461382892,
+    "multiplicative_relative_rmse": 0.2825164061709599
+  },
+  "hard_case": {
+    "ac_scale": 16,
+    "block_chebyshev_degrees": [
+      7,
+      7
+    ],
+    "final_relative_error": 8.207040113733764e-7,
+    "final_relative_residual": 9.960071866574529e-7,
+    "graph_chebyshev_degree": 6,
+    "hits": {
+      "0.001": {
+        "A_actions": 1232,
+        "C_actions": 1232,
+        "Ctilde_actions": 1232,
+        "block1_adjoint": 616,
+        "block1_forward": 616,
+        "block2_adjoint": 616,
+        "block2_forward": 616,
+        "communications": 14784,
+        "iterations": 88
+      },
+      "1e-06": {
+        "A_actions": 3094,
+        "C_actions": 3094,
+        "Ctilde_actions": 3094,
+        "block1_adjoint": 1547,
+        "block1_forward": 1547,
+        "block2_adjoint": 1547,
+        "block2_forward": 1547,
+        "communications": 37128,
+        "iterations": 221
+      }
+    },
+    "kappa_f": 64,
+    "kkt_feasibility": 7.969765966820547e-16,
+    "kkt_stationarity": 3.660270233956417e-15,
+    "measured_kappa_W": 25.27414236908816,
+    "measured_kappa_tilde_AC": 10.966913905717838,
+    "measured_kappahat_Ctilde_transpose": 11.593480717664008,
+    "mode": "full",
+    "nodes": 8,
+    "shared_scale": 16,
+    "snapshots": [
+      {
+        "communications": 21504,
+        "horizon": 128,
+        "relative_error": 0.00011084163771423135,
+        "relative_residual": 0.00011045275965381467
+      }
+    ],
+    "structural_operator_error": 2.4756977713400195e-15
+  }
+}
+
+

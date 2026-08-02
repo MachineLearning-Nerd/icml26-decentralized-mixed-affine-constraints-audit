@@ -1,0 +1,1058 @@
+{
+  "baseline_regression": {
+    "blocked_claims": 5,
+    "passed": true
+  },
+  "checks": {
+    "all_27_cells_reach_1e-6": true,
+    "all_kkt_oracles_below_1e-10": true,
+    "degree_one_control_misses_exact_budget": true,
+    "lower_bound_parameter_identities_hold": true,
+    "lower_bound_path_spectral_audit_holds": true,
+    "observed_constraint_exponent_near_half": true,
+    "observed_graph_exponent_near_half": true,
+    "observed_kappa_f_exponent_near_half": true,
+    "omitted_corrector_misses_exact_budget": true
+  },
+  "compute": {
+    "actual_logical_cpus": 64,
+    "estimated_cores": 8,
+    "gpu_allowed": false,
+    "requested_backend": "huggingface",
+    "requested_flavor": "cpu-upgrade"
+  },
+  "environment": {
+    "manager": "uv",
+    "numpy": "2.3.2",
+    "python": "3.12.12",
+    "venv": "/repo/.venv"
+  },
+  "experiment": "exact_apapc_and_communication_factor_calibration",
+  "fixed_run_command": "uv sync --frozen && uv run --frozen python reproduce.py",
+  "git_sha": "b5dc1466dd61d31849e3afd020839a4928a8a2f1",
+  "round1": {
+    "claim_verdicts": {
+      "C1": "VERIFIED",
+      "C5": "VERIFIED",
+      "scope": "finite upper-bound calibration plus an independently reconstructed Appendix G lower-bound certificate; proof-assistant formalization remains a limitation"
+    },
+    "first_hit_rows": [
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 8.448012218781821e-7,
+        "final_relative_residual": 8.773920489089251e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 216,
+            "constraint_adjoint": 36,
+            "constraint_forward": 36,
+            "iterations": 18
+          },
+          "1e-06": {
+            "communications": 588,
+            "constraint_adjoint": 98,
+            "constraint_forward": 98,
+            "iterations": 49
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 7.505561329662603e-17,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 1.7673876858061457,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.529231803965238e-7,
+        "final_relative_residual": 8.733200136887938e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 432,
+            "constraint_adjoint": 36,
+            "constraint_forward": 36,
+            "iterations": 18
+          },
+          "1e-06": {
+            "communications": 1152,
+            "constraint_adjoint": 96,
+            "constraint_forward": 96,
+            "iterations": 48
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 6.6681827299959e-17,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 2.0418002959829846,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 8.645590152649612e-7,
+        "final_relative_residual": 7.944761331118035e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 576,
+            "constraint_adjoint": 36,
+            "constraint_forward": 36,
+            "iterations": 18
+          },
+          "1e-06": {
+            "communications": 1568,
+            "constraint_adjoint": 98,
+            "constraint_forward": 98,
+            "iterations": 49
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.5555546982315586e-16,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 2.491976977164877,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 5.970881744168149e-7,
+        "final_relative_residual": 9.369609984897012e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 306,
+            "constraint_adjoint": 51,
+            "constraint_forward": 51,
+            "iterations": 17
+          },
+          "1e-06": {
+            "communications": 828,
+            "constraint_adjoint": 138,
+            "constraint_forward": 138,
+            "iterations": 46
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 8.777083671441753e-17,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 7.069550743224583,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 6.118126059499664e-7,
+        "final_relative_residual": 8.215824834116682e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 720,
+            "constraint_adjoint": 60,
+            "constraint_forward": 60,
+            "iterations": 20
+          },
+          "1e-06": {
+            "communications": 1836,
+            "constraint_adjoint": 153,
+            "constraint_forward": 153,
+            "iterations": 51
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 7.27728910353726e-17,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 5.536056975964034,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 6.735412081421443e-7,
+        "final_relative_residual": 8.627655561067837e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 768,
+            "constraint_adjoint": 48,
+            "constraint_forward": 48,
+            "iterations": 16
+          },
+          "1e-06": {
+            "communications": 2160,
+            "constraint_adjoint": 135,
+            "constraint_forward": 135,
+            "iterations": 45
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 8.49837472194074e-17,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 8.67756784476736,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 6,
+        "corrector": true,
+        "final_relative_error": 5.603684651437681e-7,
+        "final_relative_residual": 9.7607206960583e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 828,
+            "constraint_adjoint": 138,
+            "constraint_forward": 138,
+            "iterations": 23
+          },
+          "1e-06": {
+            "communications": 1980,
+            "constraint_adjoint": 330,
+            "constraint_forward": 330,
+            "iterations": 55
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 6.359601310784502e-17,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 28.27820297289833,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 5,
+        "corrector": true,
+        "final_relative_error": 5.725284223126964e-7,
+        "final_relative_residual": 9.720502042779386e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 1320,
+            "constraint_adjoint": 110,
+            "constraint_forward": 110,
+            "iterations": 22
+          },
+          "1e-06": {
+            "communications": 3180,
+            "constraint_adjoint": 265,
+            "constraint_forward": 265,
+            "iterations": 53
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.1451230088067215e-16,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 17.5758853348024,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 6,
+        "corrector": true,
+        "final_relative_error": 4.0608079603183226e-7,
+        "final_relative_residual": 8.235634680048672e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 1920,
+            "constraint_adjoint": 120,
+            "constraint_forward": 120,
+            "iterations": 20
+          },
+          "1e-06": {
+            "communications": 4992,
+            "constraint_adjoint": 312,
+            "constraint_forward": 312,
+            "iterations": 52
+          }
+        },
+        "kappa_f": 4,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.2417518519112547e-16,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 30.21704630121024,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.182103803082186e-7,
+        "final_relative_residual": 9.537211358382687e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 456,
+            "constraint_adjoint": 76,
+            "constraint_forward": 76,
+            "iterations": 38
+          },
+          "1e-06": {
+            "communications": 1236,
+            "constraint_adjoint": 206,
+            "constraint_forward": 206,
+            "iterations": 103
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.5531346546082258e-16,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 1.7673876858061457,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.289791826505478e-7,
+        "final_relative_residual": 8.440710322499159e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 864,
+            "constraint_adjoint": 72,
+            "constraint_forward": 72,
+            "iterations": 36
+          },
+          "1e-06": {
+            "communications": 2448,
+            "constraint_adjoint": 204,
+            "constraint_forward": 204,
+            "iterations": 102
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.2559591352808781e-16,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 2.0418002959829846,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.508439325916549e-7,
+        "final_relative_residual": 8.459779570798261e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 1184,
+            "constraint_adjoint": 74,
+            "constraint_forward": 74,
+            "iterations": 37
+          },
+          "1e-06": {
+            "communications": 3296,
+            "constraint_adjoint": 206,
+            "constraint_forward": 206,
+            "iterations": 103
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 3.8072734562279924e-16,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 2.491976977164877,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 5.798214351059105e-7,
+        "final_relative_residual": 9.104851851651231e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 594,
+            "constraint_adjoint": 99,
+            "constraint_forward": 99,
+            "iterations": 33
+          },
+          "1e-06": {
+            "communications": 1710,
+            "constraint_adjoint": 285,
+            "constraint_forward": 285,
+            "iterations": 95
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 3.065703529144609e-16,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 7.069550743224583,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 7.216713594767251e-7,
+        "final_relative_residual": 9.68016644869757e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 1476,
+            "constraint_adjoint": 123,
+            "constraint_forward": 123,
+            "iterations": 41
+          },
+          "1e-06": {
+            "communications": 3852,
+            "constraint_adjoint": 321,
+            "constraint_forward": 321,
+            "iterations": 107
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.7680987774817017e-16,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 5.536056975964034,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 7.375397445734341e-7,
+        "final_relative_residual": 9.257906703822431e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 1440,
+            "constraint_adjoint": 90,
+            "constraint_forward": 90,
+            "iterations": 30
+          },
+          "1e-06": {
+            "communications": 4416,
+            "constraint_adjoint": 276,
+            "constraint_forward": 276,
+            "iterations": 92
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 3.089171875185768e-16,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 8.67756784476736,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 6,
+        "corrector": true,
+        "final_relative_error": 5.43906750603161e-7,
+        "final_relative_residual": 9.474782585855303e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 1764,
+            "constraint_adjoint": 294,
+            "constraint_forward": 294,
+            "iterations": 49
+          },
+          "1e-06": {
+            "communications": 4248,
+            "constraint_adjoint": 708,
+            "constraint_forward": 708,
+            "iterations": 118
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 2.7928509224031823e-16,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 28.27820297289833,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 5,
+        "corrector": true,
+        "final_relative_error": 5.333898792109386e-7,
+        "final_relative_residual": 9.059609464175785e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 2700,
+            "constraint_adjoint": 225,
+            "constraint_forward": 225,
+            "iterations": 45
+          },
+          "1e-06": {
+            "communications": 6840,
+            "constraint_adjoint": 570,
+            "constraint_forward": 570,
+            "iterations": 114
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.2849372627361183e-16,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 17.5758853348024,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 6,
+        "corrector": true,
+        "final_relative_error": 4.4396990232990704e-7,
+        "final_relative_residual": 9.144444547276274e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 3936,
+            "constraint_adjoint": 246,
+            "constraint_forward": 246,
+            "iterations": 41
+          },
+          "1e-06": {
+            "communications": 10368,
+            "constraint_adjoint": 648,
+            "constraint_forward": 648,
+            "iterations": 108
+          }
+        },
+        "kappa_f": 16,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 5.667955114377171e-16,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 30.21704630121024,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": []
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.498166204334496e-7,
+        "final_relative_residual": 9.86573104968661e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 900,
+            "constraint_adjoint": 150,
+            "constraint_forward": 150,
+            "iterations": 75
+          },
+          "1e-06": {
+            "communications": 2484,
+            "constraint_adjoint": 414,
+            "constraint_forward": 414,
+            "iterations": 207
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 7.376471768657451e-16,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 1.7673876858061457,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": [
+          {
+            "communications": 1536,
+            "horizon": 128,
+            "relative_error": 0.000058053729098268435,
+            "relative_residual": 0.00006029965973273167
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.648939735976403e-7,
+        "final_relative_residual": 8.735196740950165e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 1704,
+            "constraint_adjoint": 142,
+            "constraint_forward": 142,
+            "iterations": 71
+          },
+          "1e-06": {
+            "communications": 4920,
+            "constraint_adjoint": 410,
+            "constraint_forward": 410,
+            "iterations": 205
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 9.257540349376283e-16,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 2.0418002959829846,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": [
+          {
+            "communications": 3072,
+            "horizon": 128,
+            "relative_error": 0.00005186384538420862,
+            "relative_residual": 0.000047100075027401494
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 2,
+        "corrector": true,
+        "final_relative_error": 9.823240163924172e-7,
+        "final_relative_residual": 8.520632461228274e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 2336,
+            "constraint_adjoint": 146,
+            "constraint_forward": 146,
+            "iterations": 73
+          },
+          "1e-06": {
+            "communications": 6624,
+            "constraint_adjoint": 414,
+            "constraint_forward": 414,
+            "iterations": 207
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.2394535503722282e-15,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 2.491976977164877,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 1,
+        "snapshots": [
+          {
+            "communications": 4096,
+            "horizon": 128,
+            "relative_error": 0.000056615412845009595,
+            "relative_residual": 0.000050144082014015547
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 6.195590522703873e-7,
+        "final_relative_residual": 9.731437103159168e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 1098,
+            "constraint_adjoint": 183,
+            "constraint_forward": 183,
+            "iterations": 61
+          },
+          "1e-06": {
+            "communications": 3348,
+            "constraint_adjoint": 558,
+            "constraint_forward": 558,
+            "iterations": 186
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.4713073293813407e-15,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 7.069550743224583,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": [
+          {
+            "communications": 2304,
+            "horizon": 128,
+            "relative_error": 0.00001526895115067301,
+            "relative_residual": 0.000023982216946867096
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 7.360703332958428e-7,
+        "final_relative_residual": 9.869323476530875e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 2916,
+            "constraint_adjoint": 243,
+            "constraint_forward": 243,
+            "iterations": 81
+          },
+          "1e-06": {
+            "communications": 7776,
+            "constraint_adjoint": 648,
+            "constraint_forward": 648,
+            "iterations": 216
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.7294597050534676e-15,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 5.536056975964034,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": [
+          {
+            "communications": 4608,
+            "horizon": 128,
+            "relative_error": 0.00006476913321352292,
+            "relative_residual": 0.0000868883822300141
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 3,
+        "corrector": true,
+        "final_relative_error": 7.687685785738688e-7,
+        "final_relative_residual": 9.491759060256348e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 2640,
+            "constraint_adjoint": 165,
+            "constraint_forward": 165,
+            "iterations": 55
+          },
+          "1e-06": {
+            "communications": 8688,
+            "constraint_adjoint": 543,
+            "constraint_forward": 543,
+            "iterations": 181
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.1817732858600265e-15,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 8.67756784476736,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 4,
+        "snapshots": [
+          {
+            "communications": 6144,
+            "horizon": 128,
+            "relative_error": 0.000014075151195985375,
+            "relative_residual": 0.000017439838231995744
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 6,
+        "corrector": true,
+        "final_relative_error": 5.554603720323348e-7,
+        "final_relative_residual": 9.67619707484005e-7,
+        "graph_chebyshev_degree": 3,
+        "hits": {
+          "0.001": {
+            "communications": 3528,
+            "constraint_adjoint": 588,
+            "constraint_forward": 588,
+            "iterations": 98
+          },
+          "1e-06": {
+            "communications": 8604,
+            "constraint_adjoint": 1434,
+            "constraint_forward": 1434,
+            "iterations": 239
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 6.114106657603893e-16,
+        "measured_kappa_W": 5.828427124746188,
+        "measured_kappa_preconditioned_constraint": 28.27820297289833,
+        "nodes": 4,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": [
+          {
+            "communications": 4608,
+            "horizon": 128,
+            "relative_error": 0.00012837809452400137,
+            "relative_residual": 0.00022363076609668002
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 5,
+        "corrector": true,
+        "final_relative_error": 5.63872856346449e-7,
+        "final_relative_residual": 9.578312396557986e-7,
+        "graph_chebyshev_degree": 6,
+        "hits": {
+          "0.001": {
+            "communications": 5400,
+            "constraint_adjoint": 450,
+            "constraint_forward": 450,
+            "iterations": 90
+          },
+          "1e-06": {
+            "communications": 13800,
+            "constraint_adjoint": 1150,
+            "constraint_forward": 1150,
+            "iterations": 230
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 8.979310226364017e-16,
+        "measured_kappa_W": 25.27414236908817,
+        "measured_kappa_preconditioned_constraint": 17.5758853348024,
+        "nodes": 8,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": [
+          {
+            "communications": 7680,
+            "horizon": 128,
+            "relative_error": 0.00008888357308518006,
+            "relative_residual": 0.00015096921212123405
+          }
+        ]
+      },
+      {
+        "constraint_chebyshev_degree": 6,
+        "corrector": true,
+        "final_relative_error": 4.782848065498423e-7,
+        "final_relative_residual": 9.9375763360344e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 7584,
+            "constraint_adjoint": 474,
+            "constraint_forward": 474,
+            "iterations": 79
+          },
+          "1e-06": {
+            "communications": 20448,
+            "constraint_adjoint": 1278,
+            "constraint_forward": 1278,
+            "iterations": 213
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.4560479799249823e-15,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 30.21704630121024,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": [
+          {
+            "communications": 12288,
+            "horizon": 128,
+            "relative_error": 0.0000385144527523084,
+            "relative_residual": 0.00007883497752335043
+          }
+        ]
+      }
+    ],
+    "hard_case": {
+      "constraint_chebyshev_degree": 6,
+      "corrector": true,
+      "final_relative_error": 4.782848065498423e-7,
+      "final_relative_residual": 9.9375763360344e-7,
+      "graph_chebyshev_degree": 8,
+      "hits": {
+        "0.001": {
+          "communications": 7584,
+          "constraint_adjoint": 474,
+          "constraint_forward": 474,
+          "iterations": 79
+        },
+        "1e-06": {
+          "communications": 20448,
+          "constraint_adjoint": 1278,
+          "constraint_forward": 1278,
+          "iterations": 213
+        }
+      },
+      "kappa_f": 64,
+      "kkt_feasibility": 0,
+      "kkt_stationarity": 1.4560479799249823e-15,
+      "measured_kappa_W": 57.69548054098108,
+      "measured_kappa_preconditioned_constraint": 30.21704630121024,
+      "nodes": 12,
+      "requested_kappa_Ctilde_transpose": 16,
+      "snapshots": [
+        {
+          "communications": 12288,
+          "horizon": 128,
+          "relative_error": 0.0000385144527523084,
+          "relative_residual": 0.00007883497752335043
+        }
+      ]
+    },
+    "limitations": [
+      "Finite experiments corroborate the upper-rate factors but cannot alone prove asymptotic big-O or minimax optimality.",
+      "The lower-bound certificate reconstructs Appendix G's identities and oracle-class argument but is not a proof-assistant artifact.",
+      "The graph sweep uses path Laplacians on 4, 8, and 12 nodes and deterministic quadratic objectives, not every admissible instance."
+    ],
+    "lower_bound_certificate": {
+      "all_path_spectral_inequalities_hold": true,
+      "certificate_scope": "Machine-checks the exact parameter identities and all path spectral cells n=3..96; the quantified span argument is independently restated, not formally proved in a proof assistant.",
+      "exact_parameter_identity": {
+        "2Lprime_plus_muprime_equals_L": true,
+        "constructed_kappa_Ctilde_transpose": 25,
+        "muprime_over_3_equals_mu": true
+      },
+      "logical_reduction": [
+        "The row-split local matrices reconstruct E.T@E and preserve the stated mixed condition number.",
+        "The dual is Nesterov's bad quadratic with geometric-tail solution.",
+        "Definition G.2 permits at most one new coordinate per alternating local-matrix action.",
+        "Moving the unlocking information between endpoint groups costs Omega(sqrt(kappa_W)) neighbor rounds.",
+        "The geometric tail requires Omega(sqrt(kappa_f*kappa_CtildeT)*log(1/epsilon)) unlocked coordinates."
+      ],
+      "oracle_class_actions": [
+        "local first-order span",
+        "neighbor communication",
+        "Ci.T@Ci multiplication"
+      ],
+      "paper_anchor": "Appendix G.2, equations (28), (30)-(38), Definition G.2",
+      "path_spectral_inequality_cells": 32
+    },
+    "negative_controls": {
+      "degree_one_outer_chebyshev": {
+        "constraint_chebyshev_degree": 1,
+        "corrector": true,
+        "final_relative_error": 3.872049264051048e+85,
+        "final_relative_residual": 8.283407401778198e+85,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": null,
+          "1e-06": null
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.4560479799249823e-15,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 30.21704630121024,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": [
+          {
+            "communications": 2048,
+            "horizon": 128,
+            "relative_error": 2.0206841465317025,
+            "relative_residual": 4.322814280227678
+          },
+          {
+            "communications": 8192,
+            "horizon": 512,
+            "relative_error": 23257.645525223816,
+            "relative_residual": 49754.675096776526
+          },
+          {
+            "communications": 32768,
+            "horizon": 2048,
+            "relative_error": 408169709635018750000,
+            "relative_residual": 873190334989445900000
+          },
+          {
+            "communications": 131072,
+            "horizon": 8192,
+            "relative_error": 3.872049264051048e+85,
+            "relative_residual": 8.283407401778198e+85
+          }
+        ]
+      },
+      "exact_first_hit_iteration": 213,
+      "omitted_corrector": {
+        "constraint_chebyshev_degree": 6,
+        "corrector": false,
+        "final_relative_error": 5.904687917895754e-7,
+        "final_relative_residual": 2.8518695102980035e-7,
+        "graph_chebyshev_degree": 8,
+        "hits": {
+          "0.001": {
+            "communications": 15840,
+            "constraint_adjoint": 990,
+            "constraint_forward": 990,
+            "iterations": 165
+          },
+          "1e-06": {
+            "communications": 34464,
+            "constraint_adjoint": 2154,
+            "constraint_forward": 2154,
+            "iterations": 359
+          }
+        },
+        "kappa_f": 64,
+        "kkt_feasibility": 0,
+        "kkt_stationarity": 1.4560479799249823e-15,
+        "measured_kappa_W": 57.69548054098108,
+        "measured_kappa_preconditioned_constraint": 30.21704630121024,
+        "nodes": 12,
+        "requested_kappa_Ctilde_transpose": 16,
+        "snapshots": [
+          {
+            "communications": 12288,
+            "horizon": 128,
+            "relative_error": 0.007485895856314883,
+            "relative_residual": 0.0037475813724728454
+          }
+        ]
+      }
+    },
+    "observed_log_log_slopes": {
+      "kappa_Ctilde_transpose": 0.37059819177015235,
+      "kappa_W": 0.43011597805459306,
+      "kappa_f": 0.5206155400479924
+    },
+    "protocol": {
+      "algorithm": "Paper Algorithm 1 APAPC with Salim et al. tight Chebyshev parameters",
+      "cells": 27,
+      "horizons": [
+        128,
+        512,
+        2048,
+        8192
+      ],
+      "seed": 20260802,
+      "tolerances": [
+        0.001,
+        0.000001
+      ]
+    }
+  },
+  "runtime_seconds": 1.3310908309649676
+}
+
+

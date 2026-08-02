@@ -1,0 +1,85 @@
+{
+  "degree_one_outer_chebyshev": {
+    "constraint_chebyshev_degree": 1,
+    "corrector": true,
+    "final_relative_error": 3.872049264051048e+85,
+    "final_relative_residual": 8.283407401778198e+85,
+    "graph_chebyshev_degree": 8,
+    "hits": {
+      "0.001": null,
+      "1e-06": null
+    },
+    "kappa_f": 64,
+    "kkt_feasibility": 0,
+    "kkt_stationarity": 1.4560479799249823e-15,
+    "measured_kappa_W": 57.69548054098108,
+    "measured_kappa_preconditioned_constraint": 30.21704630121024,
+    "nodes": 12,
+    "requested_kappa_Ctilde_transpose": 16,
+    "snapshots": [
+      {
+        "communications": 2048,
+        "horizon": 128,
+        "relative_error": 2.0206841465317025,
+        "relative_residual": 4.322814280227678
+      },
+      {
+        "communications": 8192,
+        "horizon": 512,
+        "relative_error": 23257.645525223816,
+        "relative_residual": 49754.675096776526
+      },
+      {
+        "communications": 32768,
+        "horizon": 2048,
+        "relative_error": 408169709635018750000,
+        "relative_residual": 873190334989445900000
+      },
+      {
+        "communications": 131072,
+        "horizon": 8192,
+        "relative_error": 3.872049264051048e+85,
+        "relative_residual": 8.283407401778198e+85
+      }
+    ]
+  },
+  "exact_first_hit_iteration": 213,
+  "omitted_corrector": {
+    "constraint_chebyshev_degree": 6,
+    "corrector": false,
+    "final_relative_error": 5.904687917895754e-7,
+    "final_relative_residual": 2.8518695102980035e-7,
+    "graph_chebyshev_degree": 8,
+    "hits": {
+      "0.001": {
+        "communications": 15840,
+        "constraint_adjoint": 990,
+        "constraint_forward": 990,
+        "iterations": 165
+      },
+      "1e-06": {
+        "communications": 34464,
+        "constraint_adjoint": 2154,
+        "constraint_forward": 2154,
+        "iterations": 359
+      }
+    },
+    "kappa_f": 64,
+    "kkt_feasibility": 0,
+    "kkt_stationarity": 1.4560479799249823e-15,
+    "measured_kappa_W": 57.69548054098108,
+    "measured_kappa_preconditioned_constraint": 30.21704630121024,
+    "nodes": 12,
+    "requested_kappa_Ctilde_transpose": 16,
+    "snapshots": [
+      {
+        "communications": 12288,
+        "horizon": 128,
+        "relative_error": 0.007485895856314883,
+        "relative_residual": 0.0037475813724728454
+      }
+    ]
+  }
+}
+
+

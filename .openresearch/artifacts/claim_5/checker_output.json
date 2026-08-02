@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "all_27_cells_reach_1e-6": true,
+    "all_kkt_oracles_below_1e-10": true,
+    "degree_one_control_misses_exact_budget": true,
+    "lower_bound_parameter_identities_hold": true,
+    "lower_bound_path_spectral_audit_holds": true,
+    "observed_constraint_exponent_near_half": true,
+    "observed_graph_exponent_near_half": true,
+    "observed_kappa_f_exponent_near_half": true,
+    "omitted_corrector_misses_exact_budget": true
+  },
+  "observed_log_log_slopes": {
+    "kappa_Ctilde_transpose": 0.37059819177015235,
+    "kappa_W": 0.43011597805459306,
+    "kappa_f": 0.5206155400479924
+  },
+  "lower_bound_certificate": {
+    "all_path_spectral_inequalities_hold": true,
+    "certificate_scope": "Machine-checks the exact parameter identities and all path spectral cells n=3..96; the quantified span argument is independently restated, not formally proved in a proof assistant.",
+    "exact_parameter_identity": {
+      "2Lprime_plus_muprime_equals_L": true,
+      "constructed_kappa_Ctilde_transpose": 25,
+      "muprime_over_3_equals_mu": true
+    },
+    "logical_reduction": [
+      "The row-split local matrices reconstruct E.T@E and preserve the stated mixed condition number.",
+      "The dual is Nesterov's bad quadratic with geometric-tail solution.",
+      "Definition G.2 permits at most one new coordinate per alternating local-matrix action.",
+      "Moving the unlocking information between endpoint groups costs Omega(sqrt(kappa_W)) neighbor rounds.",
+      "The geometric tail requires Omega(sqrt(kappa_f*kappa_CtildeT)*log(1/epsilon)) unlocked coordinates."
+    ],
+    "oracle_class_actions": [
+      "local first-order span",
+      "neighbor communication",
+      "Ci.T@Ci multiplication"
+    ],
+    "paper_anchor": "Appendix G.2, equations (28), (30)-(38), Definition G.2",
+    "path_spectral_inequality_cells": 32
+  }
+}
+
+
