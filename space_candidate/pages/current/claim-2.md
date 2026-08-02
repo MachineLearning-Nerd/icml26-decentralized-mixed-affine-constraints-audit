@@ -15,6 +15,9 @@ All 13 cells reach `1e-6`; dense/operator disagreement is at most `2.48e-15`; KK
 Limitation: this is a finite deterministic calibration on path graphs with 4–8 nodes, not a universal proof.
 
 - [Full mixed source](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/research/round2.py)
+- [Machine-readable contract](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/claim_contract.json)
+- [Source audit and exact quantifiers](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/source_audit.md)
+- [Method](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/method.md) · [limitations](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/limitations.md) · [evaluator gate](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/EVAL.md)
 - [Raw JSON](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/raw.json)
 - [Checker](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/checker_output.json)
 - [Controls](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_2/negative_control_output.json)

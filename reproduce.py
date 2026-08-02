@@ -20,6 +20,7 @@ from research.publication import (
     build_publication,
     validate_embedded_evidence,
     validate_materialized_artifacts,
+    validate_release_candidate,
     validate_space_candidate,
 )
 
@@ -65,6 +66,8 @@ def main() -> None:
     materialized_checks = materialized.pop("checks")
     space_candidate = validate_space_candidate()
     space_checks = space_candidate.pop("checks")
+    release_candidate = validate_release_candidate()
+    release_checks = release_candidate.pop("checks")
     checks = {
         **{f"round1.{name}": passed for name, passed in round1_checks.items()},
         **{f"round2.{name}": passed for name, passed in round2_checks.items()},
@@ -74,6 +77,7 @@ def main() -> None:
         **{f"publication.{name}": passed for name, passed in publication_checks.items()},
         **{f"materialized.{name}": passed for name, passed in materialized_checks.items()},
         **{f"space_candidate.{name}": passed for name, passed in space_checks.items()},
+        **{f"release_candidate.{name}": passed for name, passed in release_checks.items()},
     }
     failed = [name for name, passed in checks.items() if not passed]
 
@@ -102,6 +106,7 @@ def main() -> None:
         "publication": publication,
         "materialized_artifact_audit": materialized,
         "space_candidate_audit": space_candidate,
+        "release_candidate_audit": release_candidate,
         "checks": checks,
         "runtime_seconds": time.perf_counter() - started,
     }

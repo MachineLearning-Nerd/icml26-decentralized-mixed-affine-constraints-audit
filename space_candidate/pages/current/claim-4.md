@@ -19,6 +19,9 @@ Contract: train actual held-out models for all three formulations over eight det
 HFL consensus is below `2e-14`; VFL representation residual is below `2.1e-13`; MTL KKT is below `9.8e-8`. Controls violate the intended structures. Appendix B's MTL example is coupled-only; node-specific zero-coordinate affine constraints are a disclosed extension into the general mixed framework, not misattributed to Appendix B.
 
 - [Learning source](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/research/round4.py)
+- [Machine-readable contract](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/claim_contract.json)
+- [Source audit and exact quantifiers](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/source_audit.md)
+- [Method](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/method.md) · [limitations](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/limitations.md) · [evaluator gate](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/EVAL.md)
 - [Raw JSON](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/raw.json)
 - [Checker](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/checker_output.json)
 - [Controls](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_4/negative_control_output.json)

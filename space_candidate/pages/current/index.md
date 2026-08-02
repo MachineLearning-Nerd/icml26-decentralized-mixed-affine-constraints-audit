@@ -22,4 +22,6 @@ Environment: Python 3.12, `uv.lock`, NumPy 2.3.2, SciPy 1.16.1. Compute: Hugging
 
 Current pages: [Claim 1](#/current-claim-1) · [Claim 2](#/current-claim-2) · [Claim 3](#/current-claim-3) · [Claim 4](#/current-claim-4) · [Claim 5](#/current-claim-5) · [verification](#/current-verification) · [visibility matrix](#/current-visibility)
 
+Reader artifacts: [illustrated report](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/report/report.md) · [tutorial marimo notebook](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/notebooks/reproduction.py) · [release report](#/current-release) · [evaluator-blind review](#/current-red-team)
+
 The old pages are preserved unchanged and reachable under [Historical rejected baseline](#/historical-index). They are not the current verifier.

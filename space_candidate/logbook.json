@@ -18,6 +18,8 @@
       {"slug": "current-claim-5", "title": "Claim 5 — APAPC core", "file": "pages/current/claim-5.md", "children": []},
       {"slug": "current-verification", "title": "Current verification run", "file": "pages/current/verification.md", "children": []},
       {"slug": "current-visibility", "title": "Evidence visibility matrix", "file": "pages/current/visibility.md", "children": []},
+      {"slug": "current-release", "title": "Release report and provenance", "file": "pages/current/release.md", "children": []},
+      {"slug": "current-red-team", "title": "Evaluator-blind review", "file": "pages/current/red-team.md", "children": []},
       {
         "slug": "historical-index",
         "title": "Historical rejected baseline",

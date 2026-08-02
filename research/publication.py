@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 import math
 import re
@@ -318,7 +319,7 @@ def validate_space_candidate() -> dict:
             child["title"] == "Historical rejected baseline"
             for child in logbook["root"]["children"]
         ),
-        "all_current_logbook_pages_exist": len(current_files) == 8
+        "all_current_logbook_pages_exist": len(current_files) == 10
         and all((candidate_root / name).is_file() for name in current_files),
         "all_historical_page_paths_are_protected": all(
             name in historical_paths for name in historical_files
@@ -350,5 +351,178 @@ def validate_space_candidate() -> dict:
         "reachable_current_files": current_files,
         "reachable_historical_files": historical_files,
         "protected_historical_path_count": len(historical_paths),
+        "checks": checks,
+    }
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def validate_release_candidate() -> dict:
+    release_root = ROOT / "release"
+    allowlist = json.loads(
+        (release_root / "UPLOAD_ALLOWLIST.json").read_text(encoding="utf-8")
+    )
+    files = allowlist["files"]
+    targets = [item["target"] for item in files]
+    source_paths = [ROOT / item["source"] for item in files]
+    target_to_source = {
+        item["target"]: ROOT / item["source"] for item in files
+    }
+    manifest = {}
+    for line in (release_root / "UPLOAD_SHA256SUMS.txt").read_text(
+        encoding="utf-8"
+    ).splitlines():
+        if line and not line.startswith("#"):
+            digest, target = line.split("  ", 1)
+            manifest[target] = digest
+
+    protected_lines = (
+        ROOT / ".openresearch/artifacts/historical_judged_space/MANIFEST.sha256"
+    ).read_text(encoding="utf-8").splitlines()
+    protected = {
+        line.split("  ", 1)[1]: line.split("  ", 1)[0]
+        for line in protected_lines
+        if "  " in line
+    }
+    replaced = sorted(set(targets) & set(protected))
+
+    logbook = json.loads(target_to_source["logbook.json"].read_text(encoding="utf-8"))
+    reachable = set(logbook_files(logbook["root"]))
+    current_pages = sorted(path for path in reachable if path.startswith("pages/current/"))
+    current_text = "\n".join(
+        target_to_source[path].read_text(encoding="utf-8") for path in current_pages
+    )
+    blob_links = re.findall(
+        r"https://huggingface\.co/spaces/DineshAI/KS6RbZMt8L/(blob|tree)/main/([^\s)]+)",
+        current_text,
+    )
+    unresolved_links = []
+    for kind, target in blob_links:
+        if kind == "blob" and target not in target_to_source:
+            unresolved_links.append(target)
+        if kind == "tree" and not any(
+            candidate == target or candidate.startswith(target.rstrip("/") + "/")
+            for candidate in targets
+        ):
+            unresolved_links.append(target)
+
+    claim_pages = [
+        target_to_source[f"pages/current/claim-{claim}.md"].read_text(encoding="utf-8")
+        for claim in range(1, 6)
+    ]
+    required_claim_tokens = (
+        "Verdict: VERIFIED",
+        "Confidence:",
+        "source]",
+        "contract",
+        "Source audit",
+        "Method",
+        "limitations",
+        "evaluator gate",
+        "Raw JSON",
+        "checker",
+        "control",
+    )
+    source_audits = [
+        target_to_source[f"current/evidence/claim_{claim}/source_audit.md"].read_text(
+            encoding="utf-8"
+        )
+        for claim in range(1, 6)
+    ]
+    contracts = [
+        json.loads(
+            target_to_source[f"current/evidence/claim_{claim}/claim_contract.json"].read_text(
+                encoding="utf-8"
+            )
+        )
+        for claim in range(1, 6)
+    ]
+    all_payload = "\n".join(path.read_text(encoding="utf-8") for path in source_paths)
+    dry_run = subprocess.run(
+        ["python", "release/publish_space.py"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    subset = json.loads((release_root / "OLD_NEW_SUBSET.json").read_text(encoding="utf-8"))
+    traversal = json.loads(
+        (release_root / "EVALUATOR_TRAVERSAL.json").read_text(encoding="utf-8")
+    )
+    checks = {
+        "allowlist_targets_exact_authorized_space": allowlist["space_id"]
+        == "DineshAI/KS6RbZMt8L",
+        "allowlist_pins_exact_judged_revision": allowlist["protected_revision"]
+        == "ca7d5e1e68417ee85909ac717f8b08f5abe952c9",
+        "all_upload_sources_exist": all(path.is_file() for path in source_paths),
+        "all_upload_sources_are_utf8_text": all(
+            "\x00" not in path.read_text(encoding="utf-8") for path in source_paths
+        ),
+        "upload_targets_are_unique_and_relative": len(targets) == len(set(targets))
+        and all(not Path(target).is_absolute() and ".." not in Path(target).parts for target in targets),
+        "manifest_covers_every_nonself_upload": set(manifest)
+        == set(targets) - {"current/release/UPLOAD_SHA256SUMS.txt"},
+        "manifest_hashes_match_sources": all(
+            manifest.get(target) == sha256(source)
+            for target, source in target_to_source.items()
+            if target != "current/release/UPLOAD_SHA256SUMS.txt"
+        ),
+        "protected_manifest_has_17_paths": len(protected) == 17,
+        "only_logbook_is_replaced": replaced == ["logbook.json"],
+        "all_historical_pages_remain_reachable": {
+            path for path in reachable if not path.startswith("pages/current/")
+        }.issubset(protected),
+        "subset_record_matches_manifest": subset["protected_file_count"] == len(protected)
+        and subset["protected_path_subset"]
+        and subset["byte_identical_protected_paths_except_logbook"]
+        and subset["only_replaced_path"] == "logbook.json",
+        "all_current_pages_are_uploaded": set(current_pages).issubset(target_to_source),
+        "all_hf_links_resolve_in_allowlist": bool(blob_links) and not unresolved_links,
+        "all_claim_pages_expose_complete_evidence": all(
+            all(token.lower() in page.lower() for token in required_claim_tokens)
+            for page in claim_pages
+        ),
+        "all_claim_contracts_parse": [contract["claim_id"] for contract in contracts]
+        == ["C1", "C2", "C3", "C4", "C5"],
+        "all_source_audits_have_hash_date_and_anchors": all(
+            "2026-08-02" in audit
+            and "f7b9689819c04bee20e8ccc46e51e52d1fbc0c4d5dbb34eae3ac53cf9d2e647a" in audit
+            and "anchor" in audit.lower()
+            for audit in source_audits
+        ),
+        "canonical_page_links_report_notebook_release_and_red_team": all(
+            token in target_to_source["pages/current/index.md"].read_text(encoding="utf-8")
+            for token in ("current/report/report.md", "current/notebooks/reproduction.py", "#/current-release", "#/current-red-team")
+        ),
+        "blind_review_records_two_distinct_passes": "first_pass_missing" in traversal
+        and traversal.get("second_pass") == "PASS",
+        "release_pages_are_reachable": {
+            "pages/current/release.md",
+            "pages/current/red-team.md",
+        }.issubset(reachable),
+        "dry_run_upload_verifier_passes": dry_run.returncode == 0
+        and '"mode": "dry-run"' in dry_run.stdout,
+        "secret_scan_is_clean": not re.search(
+            r"(?i)(hf_[a-z0-9]{20,}|authorization:\s*bearer|api[_-]?key\s*[:=]\s*['\"][^'\"]+)",
+            all_payload,
+        ),
+    }
+    return {
+        "allowlist": "release/UPLOAD_ALLOWLIST.json",
+        "upload_file_count": len(files),
+        "manifest_entry_count": len(manifest),
+        "protected_path_count": len(protected),
+        "replaced_protected_paths": replaced,
+        "canonical_entrypoint": logbook["root"]["file"],
+        "reachable_page_count": len(reachable),
+        "hf_links_checked": len(blob_links),
+        "unresolved_links": unresolved_links,
+        "first_pass_files_opened": traversal["first_pass_files_opened"],
+        "first_pass_missing": traversal["first_pass_missing"],
+        "second_pass": traversal["second_pass"],
+        "dry_run_stdout": dry_run.stdout,
+        "dry_run_stderr": dry_run.stderr,
         "checks": checks,
     }

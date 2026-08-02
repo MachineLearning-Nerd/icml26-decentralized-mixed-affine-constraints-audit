@@ -1,0 +1,34 @@
+{
+  "entrypoints": ["logbook.json", "pages/current/index.md"],
+  "first_pass_files_opened": [
+    "logbook.json",
+    "pages/current/index.md",
+    "pages/current/claim-1.md",
+    "pages/current/claim-2.md",
+    "pages/current/claim-3.md",
+    "pages/current/claim-4.md",
+    "pages/current/claim-5.md",
+    "pages/current/verification.md",
+    "pages/current/visibility.md"
+  ],
+  "first_pass_missing": [
+    "linked evidence was not staged",
+    "contracts and source audits were not directly linked",
+    "verification named a superseded run",
+    "report and notebook were not linked from the canonical page",
+    "release hashes and historical subset proof were absent"
+  ],
+  "second_pass": "PASS",
+  "second_pass_files_opened": "All 73 paths in UPLOAD_ALLOWLIST.json and all 17 paths in HISTORICAL_MANIFEST.sha256; logbook.json is shared, so the fresh candidate contains 89 files.",
+  "second_pass_candidate_directory": "/tmp/orx-ks6-candidate.iUHud5/space",
+  "second_pass_findings": {
+    "candidate_file_count": 89,
+    "reachable_logbook_pages": 16,
+    "claim_pages": 5,
+    "evidence_links_per_claim": 9,
+    "upload_hashes_match": true,
+    "historical_non_logbook_hashes_match": true,
+    "unresolved_evidence_links": 0,
+    "secret_matches": 0
+  }
+}

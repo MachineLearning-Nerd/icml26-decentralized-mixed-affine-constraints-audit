@@ -9,6 +9,9 @@ The hard smooth cell reaches `1e-6` in 213 iterations. Removing the corrector de
 Limitations: finite deterministic quadratics corroborate the predicted behavior but do not prove every admissible instance.
 
 - [Exact Algorithm 1 source](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/research/round1.py)
+- [Machine-readable contract](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/claim_contract.json)
+- [Source audit and exact quantifiers](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/source_audit.md)
+- [Method](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/method.md) · [limitations](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/limitations.md) · [evaluator gate](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/EVAL.md)
 - [Raw JSON](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/raw.json)
 - [Checker](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/checker_output.json)
 - [Controls](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_5/negative_control_output.json)

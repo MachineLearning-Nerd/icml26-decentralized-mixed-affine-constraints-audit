@@ -11,3 +11,5 @@ Traversal begins at [Current verification](#/current), follows the five claim pa
 | 5 | [Claim 5](#/current-claim-5) | Yes | Yes | Yes | Yes | Yes | Exact Algorithm 1 predictor-corrector core | VERIFIED |
 
 The current verifier and pinned environment are on [Current verification run](#/current-verification). Old weak pages are reachable only under the exact label [Historical rejected baseline](#/historical-index).
+
+Release provenance, the exact upload allowlist, hashes, historical subset proof, and both blind-review passes are reachable from [Release report](#/current-release) and [Evaluator-blind review](#/current-red-team).

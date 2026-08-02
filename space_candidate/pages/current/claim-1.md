@@ -15,6 +15,9 @@ All 27 cells reach `1e-6`. Observed communication slopes are κ_f `0.520616`, κ
 Appendix G certificate: both exact parameter identities pass and all 32 path spectral cells for `n=3..96` pass. Limitation: the quantified span argument is independently reconstructed, not formalized in a proof assistant; finite sweeps do not prove universal big-O.
 
 - [Executable APAPC source](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/research/round1.py)
+- [Machine-readable contract](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/claim_contract.json)
+- [Source audit and exact quantifiers](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/source_audit.md)
+- [Method](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/method.md) · [limitations](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/limitations.md) · [evaluator gate](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/EVAL.md)
 - [Raw JSON](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/raw.json)
 - [Independent checker](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/checker_output.json)
 - [Negative controls](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_1/negative_control_output.json)

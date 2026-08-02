@@ -1,0 +1,9 @@
+{
+  "protected_revision": "ca7d5e1e68417ee85909ac717f8b08f5abe952c9",
+  "protected_file_count": 17,
+  "protected_path_subset": true,
+  "byte_identical_protected_paths_except_logbook": true,
+  "only_replaced_path": "logbook.json",
+  "reason_for_replacement": "Make current verification the canonical root while nesting all historical pages under the exact label Historical rejected baseline.",
+  "status": "PASS in fresh candidate assembled from the exact protected revision; final Hugging Face verifier recomputes this assertion"
+}

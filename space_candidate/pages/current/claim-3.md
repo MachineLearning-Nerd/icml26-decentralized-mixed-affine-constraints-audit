@@ -15,6 +15,9 @@ The 22-dimensional problem has exact subgradient bound `0.391983`; the LP equali
 Omitting the subgradient leaves gap `0.027542`; omitting the constraint operator leaves residual `4.574719`. Paper line 12 differs from the Lan outer-average recurrence invoked by Appendix E: the exact printed route has no hit and ends with residual `11.710247`. The source-consistent Lan route is accepted; the unresolved text discrepancy limits confidence.
 
 - [Gradient Sliding source](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/research/round3.py)
+- [Machine-readable contract](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/claim_contract.json)
+- [Source audit and exact quantifiers](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/source_audit.md)
+- [Method](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/method.md) · [limitations](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/limitations.md) · [evaluator gate](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/EVAL.md)
 - [Raw JSON](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/raw.json)
 - [LP/checker output](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/checker_output.json)
 - [Controls and line-12 audit](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/evidence/claim_3/negative_control_output.json)
