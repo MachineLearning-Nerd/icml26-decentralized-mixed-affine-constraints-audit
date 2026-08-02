@@ -18,15 +18,17 @@ Current total score: **5/10**. Conservative projected total: **8–10/10**. Best
 
 The stacked lineage is baseline → exact APAPC → full mixed APAPC → source-consistent Gradient Sliding → learning applications → cumulative figures → materialized report/Space → evaluator-blind release. One exact-text Gradient Sliding sibling is retained as a rejected interpretation because the printed line-12 recurrence becomes unstable.
 
-All jobs used Hugging Face `cpu-upgrade`, never GPU. Every node inherited exactly `uv sync --frozen && uv run --frozen python reproduce.py`. The campaign used 796 seconds of recorded HF job wall time before the final publication run, including the 86/86 blind-audit pass `ff79d821-3983-471d-a808-02604e7b82f3`; the final total is reported after that run. The backend did not expose a monetary charge, so no unsupported cost estimate is invented.
+All jobs used Hugging Face `cpu-upgrade`, never GPU. Every node inherited exactly `uv sync --frozen && uv run --frozen python reproduce.py`. The campaign through the frozen scientific release used 865 seconds (14m25s) of recorded HF job wall time, ending with the 86/86 pass `05a428a4-0570-4cef-954a-6c421fdf20d8`. The backend did not expose a monetary charge, so cost is reported as unavailable instead of guessed. The later status-correction run is metadata validation, not new scientific evidence, and is recorded in the OpenResearch tree.
 
 ## Publication action
 
-After the final release run passes, one text-only Hugging Face Hub commit will update **only** `DineshAI/KS6RbZMt8L` using the committed allowlist. The exact judged revision `ca7d5e1e68417ee85909ac717f8b08f5abe952c9` remains the historical source. Existing pages and evidence remain byte-identical; only `logbook.json` is replaced to put current verification first. The exact published text paths are then fast-forwarded to GitHub `main`, and both remote revisions are verified.
+The exact 73-path text payload was published only to `DineshAI/KS6RbZMt8L` at revision `cf6997e179e72435d967de1d26ef51a924ceff91`, then downloaded into a fresh directory and verified. The exact judged revision `ca7d5e1e68417ee85909ac717f8b08f5abe952c9` remains the historical source. Existing historical pages and evidence remain byte-identical; only `logbook.json` was replaced to put current verification first. GitHub `main` was also verified after publication.
+
+This status-only correction is parent-locked to `cf6997e179e72435d967de1d26ef51a924ceff91`, reuses the same text allowlist, and alters no algorithm, raw evidence, claim verdict, or pinned dependency. Its purpose is solely to remove pre-publication future tense from the evaluator-visible pages.
 
 - [Upload allowlist](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/release/UPLOAD_ALLOWLIST.json)
 - [Upload SHA-256 manifest](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/release/UPLOAD_SHA256SUMS.txt)
 - [Historical judged manifest](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/release/HISTORICAL_MANIFEST.sha256)
 - [Evaluator-blind review](#/current-red-team)
 
-Publication status: **release-ready; the 86/86 evaluator-blind gate passed and one final hash-locked rerun precedes the upload**. After upload the paper is awaiting the live judge; only that judge can change the score.
+Publication status: **PUBLISHED; awaiting the live judge**. The refreshed verdict dataset revision `8b91cfafbec15a3842da401435bd4e3ca2980626` still selects the old judged Space revision and 5/10 by exact `space_id`, so no score increase is claimed.
