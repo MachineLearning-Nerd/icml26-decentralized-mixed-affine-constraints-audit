@@ -1,0 +1,11 @@
+{
+  "claim_id": "C5",
+  "verdict_target": "VERIFIED",
+  "source": "Algorithm 1, Theorems 4.1 and 4.5",
+  "contract": [
+    "Execute both predictor and corrector updates with the paper's parameterization.",
+    "Compare every result to a separately constructed KKT optimum.",
+    "Show that omitting the corrector misses the accepted hard-case first-hit budget.",
+    "Exit nonzero if exact APAPC, KKT, or negative-control checks fail."
+  ]
+}

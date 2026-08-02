@@ -1,0 +1,12 @@
+{
+  "claim_id": "C1",
+  "verdict_target": "VERIFIED",
+  "source": "Theorem 4.1, Table 1, Appendix G",
+  "scope": "Smooth strongly convex shared-variable problem (10), a special case of the mixed framework, in the naturally defined decentralized first-order oracle class of Definition G.2.",
+  "contract": [
+    "Execute exact APAPC with nested Chebyshev matrix actions and count actual graph multiplications to independently selected first-hit tolerances.",
+    "Audit kappa_f, kappa_Ctilde-transpose, kappa_W, and log(1/epsilon) without selecting the horizon from the theorem formula.",
+    "Reconstruct the Appendix G lower-bound parameter identities and oracle-class reduction separately from the upper-bound runs.",
+    "Exit nonzero if any assumption, KKT, factor-slope, control, or certificate gate fails."
+  ]
+}
