@@ -49,6 +49,7 @@ def main() -> None:
     print(json.dumps({
         "space_id": spec["space_id"],
         "protected_revision": spec["protected_revision"],
+        "publication_parent_revision": spec["publication_parent_revision"],
         "text_files": len(files),
         "mode": "execute" if args.execute else "dry-run",
     }, sort_keys=True))
@@ -68,8 +69,8 @@ def main() -> None:
         repo_id=spec["space_id"],
         repo_type="space",
         operations=operations,
-        commit_message="Publish exact claim-by-claim CPU reproduction",
-        parent_commit=spec["protected_revision"],
+        commit_message="Correct published reproduction status metadata",
+        parent_commit=spec["publication_parent_revision"],
     )
     print(json.dumps({"published_revision": result.oid, "space_id": spec["space_id"]}, sort_keys=True))
 

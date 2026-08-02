@@ -5,5 +5,7 @@
   "byte_identical_protected_paths_except_logbook": true,
   "only_replaced_path": "logbook.json",
   "reason_for_replacement": "Make current verification the canonical root while nesting all historical pages under the exact label Historical rejected baseline.",
-  "status": "PASS in fresh candidate assembled from the exact protected revision; final Hugging Face verifier recomputes this assertion"
+  "initial_published_revision": "cf6997e179e72435d967de1d26ef51a924ceff91",
+  "post_publication_fresh_download_passed": true,
+  "status": "PASS: all 16 protected non-logbook paths remain byte-identical; logbook.json is the sole intentional replacement"
 }

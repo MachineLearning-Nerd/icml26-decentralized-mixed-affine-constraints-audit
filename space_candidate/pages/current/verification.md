@@ -8,7 +8,9 @@ uv sync --frozen && uv run --frozen python reproduce.py
 
 The command exits nonzero if any scientific, control, embedded-evidence, figure, report-link, or notebook gate fails. The pinned environment is `pyproject.toml` plus `uv.lock`. Executable files are [reproduce.py](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/reproduce.py) and [research/](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/tree/main/research).
 
-Latest frozen release evidence: Git SHA `a6706674d87a60903bda4e673aa99510a53895b7`, run `ff79d821-3983-471d-a808-02604e7b82f3`, HF `cpu-upgrade`, 16 cores estimated, 64 logical CPUs observed, 28.1083 s scientific-verifier runtime, 86/86 gates true. The final child changes only validated status text and payload hashes, then reruns this cumulative suite before publication.
+Latest frozen scientific release evidence: Git SHA `050227ad5b4f72ef3c5c5bd8c563d2da6ab43f44`, run `05a428a4-0570-4cef-954a-6c421fdf20d8`, HF `cpu-upgrade`, 16 cores estimated, 64 logical CPUs observed, 44.6086 s verifier runtime, 86/86 gates true. The exact payload was published at Space revision `cf6997e179e72435d967de1d26ef51a924ceff91`; a fresh post-publication download matched every payload hash, every protected non-logbook hash, every canonical page, and every displayed headline number against raw JSON.
+
+This page supersedes stale pre-publication wording in that first published revision. The correction changes status/provenance text only; the same fixed command, lock, algorithms, raw data, and scientific gates are retained and rerun before the correction can be uploaded.
 
 Environment versions observed: Python 3.12.12, NumPy 2.3.2, SciPy 1.16.1. GPU allowed: `false`.
 
