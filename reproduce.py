@@ -14,6 +14,7 @@ import numpy as np
 
 from research.round1 import run_round1
 from research.round2 import run_round2
+from research.round3 import run_round3
 
 
 ROOT = Path(__file__).resolve().parent
@@ -46,14 +47,17 @@ def main() -> None:
     round1_checks = round1.pop("checks")
     round2 = run_round2()
     round2_checks = round2.pop("checks")
+    round3 = run_round3()
+    round3_checks = round3.pop("checks")
     checks = {
         **{f"round1.{name}": passed for name, passed in round1_checks.items()},
         **{f"round2.{name}": passed for name, passed in round2_checks.items()},
+        **{f"round3.{name}": passed for name, passed in round3_checks.items()},
     }
     failed = [name for name, passed in checks.items() if not passed]
 
     result = {
-        "experiment": "exact_apapc_and_communication_factor_calibration",
+        "experiment": "exact_gradient_sliding_nonsmooth_mixed_constraints",
         "git_sha": git_sha(),
         "fixed_run_command": RUN_COMMAND,
         "environment": {
@@ -65,13 +69,14 @@ def main() -> None:
         "compute": {
             "requested_backend": "huggingface",
             "requested_flavor": "cpu-upgrade",
-            "estimated_cores": 8,
+            "estimated_cores": 16,
             "actual_logical_cpus": os.cpu_count(),
             "gpu_allowed": False,
         },
         "baseline_regression": baseline,
         "round1": round1,
         "round2": round2,
+        "round3": round3,
         "checks": checks,
         "runtime_seconds": time.perf_counter() - started,
     }
@@ -80,7 +85,7 @@ def main() -> None:
     print("EVIDENCE_JSON_END")
     if failed:
         raise SystemExit(f"EVAL: FAIL — round-1 checks failed: {failed}")
-    print("EVAL: PASS — exact APAPC and full mixed additive-work checks verified")
+    print("EVAL: PASS — smooth APAPC and nonsmooth Gradient Sliding checks verified")
 
 
 if __name__ == "__main__":
