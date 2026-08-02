@@ -69,7 +69,7 @@ def main() -> None:
         repo_id=spec["space_id"],
         repo_type="space",
         operations=operations,
-        commit_message="Correct published reproduction status metadata",
+        commit_message="Add high-accuracy Claim 3 evidence",
         parent_commit=spec["publication_parent_revision"],
     )
     print(json.dumps({"published_revision": result.oid, "space_id": spec["space_id"]}, sort_keys=True))

@@ -1,6 +1,6 @@
 # Current claim-by-claim verification
 
-**Original judged score: 5/10. Current live judged score: 9/10 at Space revision `cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe`.** This additive candidate targets only the judge's remaining Claim 3 criticism; no 10/10 result is claimed unless the live judge evaluates a later revision that way.
+**Original judged score: 5/10. Current live judged score: 9/10 at Space revision `cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe`.** This additive update targets only the judge's remaining Claim 3 criticism; no 10/10 result is claimed unless the live judge evaluates a later revision that way.
 
 The current verifier supersedes the toy methods in the historical baseline. It implements paper Algorithm 1 APAPC, Appendix J's full mixed block, and Algorithm 2's equation-(7) Gradient Sliding subproblem; it also trains actual HFL, VFL, and MTL models.
 

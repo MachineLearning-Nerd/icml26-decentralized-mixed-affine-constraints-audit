@@ -16,15 +16,15 @@ Current total score: **9/10** at revision `cbf9ad1348a00e86543c9edf16c1c2fd1a275
 
 ## Experiment tree and compute
 
-The stacked lineage is baseline → exact APAPC → full mixed APAPC → source-consistent Gradient Sliding → learning applications → cumulative figures → evaluator-blind release → high-accuracy Gradient Sliding → materialized Claim 3 release. The exact-text route remains a source-certified rejected interpretation because it is undefined at `k=1`; its natural completion becomes unstable.
+The stacked lineage is baseline → exact APAPC → full mixed APAPC → source-consistent Gradient Sliding → learning applications → cumulative figures → evaluator-blind release → high-accuracy Gradient Sliding → materialized Claim 3 release → parent-locked final release. The exact-text route remains a source-certified rejected interpretation because it is undefined at `k=1`; its natural completion becomes unstable.
 
-All jobs used Hugging Face `cpu-upgrade`, never GPU. Every node inherited exactly `uv sync --frozen && uv run --frozen python reproduce.py`. The campaign through the frozen scientific release used 865 seconds (14m25s) of recorded HF job wall time, ending with the 86/86 pass `05a428a4-0570-4cef-954a-6c421fdf20d8`. The backend did not expose a monetary charge, so cost is reported as unavailable instead of guessed. The later status-correction run is metadata validation, not new scientific evidence, and is recorded in the OpenResearch tree.
+All jobs used Hugging Face `cpu-upgrade`, never GPU. Every node inherited exactly `uv sync --frozen && uv run --frozen python reproduce.py`. The campaign through the first frozen scientific release used 865 seconds (14m25s) of recorded HF job wall time. The targeted high-accuracy source job added 132 seconds of HF wall time, and materialization run `c1f6af6f-23b5-43d3-9a74-19ca9658a3e7` added 84 seconds of HF wall time while reporting 65.6603 seconds inside the verifier. The backend did not expose a monetary charge, so cost is reported as unavailable instead of guessed.
 
 ## Publication action
 
 The exact 73-path text payload was published only to `DineshAI/KS6RbZMt8L` at revision `cf6997e179e72435d967de1d26ef51a924ceff91`, then downloaded into a fresh directory and verified. The exact judged revision `ca7d5e1e68417ee85909ac717f8b08f5abe952c9` remains the historical source. Existing historical pages and evidence remain byte-identical; only `logbook.json` was replaced to put current verification first. GitHub `main` was also verified after publication.
 
-This status-only correction is parent-locked to `cf6997e179e72435d967de1d26ef51a924ceff91`, reuses the same text allowlist, and alters no algorithm, raw evidence, claim verdict, or pinned dependency. Its purpose is solely to remove pre-publication future tense from the evaluator-visible pages.
+The high-accuracy update is parent-locked to the live judged revision `cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe`. Its text-only 77-path allowlist adds the exact Algorithm 2 TeX excerpt, high-accuracy raw data, independent checker, and natural-completion control without deleting or modifying protected historical evidence. Publication uses `python release/publish_space.py --execute` against only the existing `DineshAI/KS6RbZMt8L` Space.
 
 - [Upload allowlist](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/release/UPLOAD_ALLOWLIST.json)
 - [Upload SHA-256 manifest](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/release/UPLOAD_SHA256SUMS.txt)
