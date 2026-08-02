@@ -1,0 +1,26 @@
+% Exact excerpt from arXiv:2602.04479v1 main.tex, lines 356--377.
+% Retrieved 2026-08-02 from https://arxiv.org/e-print/2602.04479 with an explicit User-Agent.
+% Source tar SHA-256: 5f481911add79c8eaa45b946bb0d9a4cb29df256b68fc7d894eb492e2476f4aa
+% Full main.tex SHA-256: 8f7b09d693b6dca3d06a8e2b3e31e4e0bf32a744ad117d0976968a079f4e55d4
+\begin{algorithm}[H]
+    \caption{\textsc{Gradient Sliding}}
+    \label{alg:sliding}
+    \begin{algorithmic}[1]
+        \STATE {\bf Input:} $u^0 \in U$
+        \STATE {\bf Parameters:}  %
+          $\{\gamma_k\} _{k=1}^\infty, \{\eta_k\}_{t=1}^\infty, \{\theta_t\}_{t=1}^\infty \subseteq \R_{++}$,
+          $N \in \N$, $\{T_k\}_{k=1}^N \subseteq \N^N$
+        \STATE $\overline{u}^0 \eqdef u^0$
+        \FOR{$k=1,2,\ldots, N$}{}
+        \STATE $\underline{u}^k \eqdef \gamma_k u^{k-1} +  (1-\gamma_k)\overline{u}^{k-1}$\label{alg:sliding:line:x:1}
+        \STATE $u^k_0 \eqdef \tilde{u}^k_0$, $\tilde{u}^k_0 \eqdef u^{k-1}$\label{alg:sliding:line:x:2}
+        \FOR{$t=1,2,\ldots, T_k$}{}
+        \STATE $u^k_t = \argmin\limits_{w \in \cU}\; \Phi_{H_r}(w, u^k_{t-1}, \underline{u}^{k}, u^{k-1}, \beta_k, \eta_t)$  \label{alg:sliding:line:x:3}
+        \STATE $\tilde{u}^k_t = \theta_t u^k_t + (1 - \theta_t) \tilde{u}^k_{t-1}$ \label{alg:sliding:line:x:4}
+        \ENDFOR
+        \STATE$u^k \eqdef u^k_{T_k}$, $\tilde{u}^k \eqdef \tilde{u}^k_{T_k}$ \label{alg:sliding:line:x:5}
+        \STATE $\overline{u}^{k} \eqdef \gamma_k \tilde{u}^k +  (1-\gamma_k)\tilde{u}^{k-1}$\label{alg:sliding:line:x:6}
+        \ENDFOR
+        \STATE {\bf Output:} $\overline{u}^N$
+    \end{algorithmic}
+\end{algorithm}

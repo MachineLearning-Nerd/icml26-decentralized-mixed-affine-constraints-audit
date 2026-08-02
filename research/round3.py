@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 from concurrent.futures import ProcessPoolExecutor
+from pathlib import Path
 
 import numpy as np
 from scipy.optimize import linprog
@@ -15,10 +16,18 @@ OUTER_BUDGETS = (8, 16, 32, 64, 128, 256, 512)
 INNER_BUDGETS = (1, 4, 16, 64)
 PENALTIES = (16.0, 20.0, 24.0, 28.0, 32.0, 40.0, 48.0, 64.0)
 TOLERANCES = (0.05, 0.02, 0.01)
+HIGH_ACCURACY_TOLERANCES = (0.01, 0.005, 0.001)
+HIGH_ACCURACY_OUTER_BUDGET = 8192
+HIGH_ACCURACY_INNER_BUDGETS = (64, 128, 256)
+HIGH_ACCURACY_PENALTIES = (64.0, 128.0, 256.0, 512.0)
+SOURCE_EXCERPT = (
+    Path(__file__).resolve().parents[1]
+    / ".openresearch/sources/arxiv_2602.04479_algorithm2.tex"
+)
 
 
-def make_nonsmooth_problem() -> dict:
-    mixed = build_mixed_problem(4.0, 4.0, 4.0, 4)
+def make_nonsmooth_problem(nodes: int = 4) -> dict:
+    mixed = build_mixed_problem(4.0, 4.0, 4.0, nodes)
     constraint = mixed["constraint"]
     feasible_seed = np.linspace(-0.45, 0.65, constraint.shape[1])
     rhs = constraint @ feasible_seed
@@ -67,9 +76,11 @@ def nonsmooth_subgradient(point: np.ndarray, problem: dict) -> np.ndarray:
     return problem["weights"] * np.sign(point - problem["center"])
 
 
-def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
-    outer_budget, inner_budget, penalty, interpretation = arguments
-    problem = make_nonsmooth_problem()
+def run_gradient_sliding(arguments: tuple) -> dict:
+    outer_budget, inner_budget, penalty, interpretation, *options = arguments
+    nodes = options[0] if options else 4
+    tolerances = options[1] if len(options) > 1 else TOLERANCES
+    problem = make_nonsmooth_problem(nodes)
     dimension = len(problem["center"])
     current = np.zeros(dimension)
     averaged = current.copy()
@@ -77,7 +88,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
     smoothness = penalty * problem["sigma_max"] ** 2
     subgradient_calls = 0
     matrix_actions = 0
-    hits: dict[str, dict | None] = {str(value): None for value in TOLERANCES}
+    hits: dict[str, dict | None] = {str(value): None for value in tolerances}
     snapshots = []
 
     for outer in range(1, outer_budget + 1):
@@ -123,7 +134,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
         previous_inner_average = inner_average
         gap = abs(nonsmooth_value(averaged, problem) - problem["optimum_value"])
         residual = float(np.linalg.norm(problem["constraint"] @ averaged - problem["rhs"]))
-        for tolerance in TOLERANCES:
+        for tolerance in tolerances:
             key = str(tolerance)
             if hits[key] is None and max(gap, residual) <= tolerance:
                 hits[key] = {
@@ -133,7 +144,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
                     "objective_gap_absolute": gap,
                     "constraint_residual": residual,
                 }
-        if outer in OUTER_BUDGETS:
+        if outer in (*OUTER_BUDGETS, 1024, 2048, 4096, 8192):
             snapshots.append(
                 {
                     "outer_iteration": outer,
@@ -147,6 +158,7 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
         "outer_budget": outer_budget,
         "inner_budget": inner_budget,
         "penalty": penalty,
+        "nodes": nodes,
         "interpretation": interpretation,
         "hits": hits,
         "final_objective_gap_absolute": gap,
@@ -166,6 +178,44 @@ def run_gradient_sliding(arguments: tuple[int, int, float, str]) -> dict:
             "equality_residual": problem["lp_equality_residual"],
             "objective_recalculation_error": problem["lp_objective_recalculation_error"],
         },
+    }
+
+
+def select_high_accuracy(rows: list[dict]) -> dict[str, dict | None]:
+    selected = {}
+    for tolerance in HIGH_ACCURACY_TOLERANCES:
+        key = str(tolerance)
+        candidates = [row for row in rows if row["hits"][key] is not None]
+        selected[key] = min(
+            candidates,
+            key=lambda row: (
+                row["hits"][key]["matrix_actions"],
+                row["hits"][key]["subgradient_calls"],
+            ),
+            default=None,
+        )
+    return selected
+
+
+def algorithm2_source_certificate() -> dict:
+    source = SOURCE_EXCERPT.read_text(encoding="utf-8")
+    initializes_bar_u0 = r"\overline{u}^0 \eqdef u^0" in source
+    reads_tilde_previous = (
+        r"(1-\gamma_k)\tilde{u}^{k-1}" in source
+    )
+    initializes_outer_tilde_u0 = r"\tilde{u}^0 \eqdef" in source
+    return {
+        "source": str(SOURCE_EXCERPT.relative_to(Path(__file__).resolve().parents[1])),
+        "source_tar_sha256": "5f481911add79c8eaa45b946bb0d9a4cb29df256b68fc7d894eb492e2476f4aa",
+        "full_main_tex_sha256": "8f7b09d693b6dca3d06a8e2b3e31e4e0bf32a744ad117d0976968a079f4e55d4",
+        "initializes_bar_u0": initializes_bar_u0,
+        "line_12_reads_tilde_u_k_minus_1": reads_tilde_previous,
+        "initializes_outer_tilde_u0": initializes_outer_tilde_u0,
+        "exact_printed_algorithm_is_defined_at_k1": not (
+            initializes_bar_u0 and reads_tilde_previous and not initializes_outer_tilde_u0
+        ),
+        "natural_completion_used_by_literal_control": r"\tilde{u}^0 := u^0",
+        "source_consistent_correction": r"\overline{u}^k := \gamma_k\tilde{u}^k + (1-\gamma_k)\overline{u}^{k-1}",
     }
 
 
@@ -226,6 +276,35 @@ def run_round3() -> dict:
             "literal_paper_line_12",
         )
     )
+    high_accuracy_grid = [
+        (
+            HIGH_ACCURACY_OUTER_BUDGET,
+            inner,
+            penalty,
+            "lan_canonical",
+            12,
+            HIGH_ACCURACY_TOLERANCES,
+        )
+        for inner in HIGH_ACCURACY_INNER_BUDGETS
+        for penalty in HIGH_ACCURACY_PENALTIES
+    ]
+    with ProcessPoolExecutor(max_workers=12) as pool:
+        high_accuracy_rows = list(pool.map(run_gradient_sliding, high_accuracy_grid))
+    high_accuracy_selected = select_high_accuracy(high_accuracy_rows)
+    tightest = high_accuracy_selected["0.001"]
+    source_certificate = algorithm2_source_certificate()
+    literal_high_accuracy = None
+    if tightest is not None:
+        literal_high_accuracy = run_gradient_sliding(
+            (
+                HIGH_ACCURACY_OUTER_BUDGET,
+                tightest["inner_budget"],
+                tightest["penalty"],
+                "literal_paper_line_12",
+                12,
+                HIGH_ACCURACY_TOLERANCES,
+            )
+        )
     matrix_counts = [selected[str(value)]["hits"][str(value)]["matrix_actions"] for value in TOLERANCES]
     subgradient_counts = [selected[str(value)]["hits"][str(value)]["subgradient_calls"] for value in TOLERANCES]
     checks = {
@@ -239,6 +318,27 @@ def run_round3() -> dict:
         "omitted_subgradient_misses_0.01": omitted_subgradient["hits"]["0.01"] is None,
         "omitted_constraint_operator_misses_0.01": no_constraint_operator["hits"]["0.01"] is None,
         "exact_printed_line_12_misses_0.01": literal["hits"]["0.01"] is None,
+        "high_accuracy_problem_has_at_least_64_dimensions": all(
+            row["assumption_audit"]["dimension"] >= 64 for row in high_accuracy_rows
+        ),
+        "high_accuracy_grid_contains_0.001_first_hit": tightest is not None,
+        "high_accuracy_all_three_levels_have_first_hits": all(
+            high_accuracy_selected[str(value)] is not None
+            for value in HIGH_ACCURACY_TOLERANCES
+        ),
+        "high_accuracy_lp_oracles_are_accurate": all(
+            row["independent_lp"]["equality_residual"] < 1e-8
+            and row["independent_lp"]["objective_recalculation_error"] < 1e-10
+            for row in high_accuracy_rows
+        ),
+        "authoritative_tex_exposes_undefined_tilde_u0": (
+            source_certificate["initializes_bar_u0"]
+            and source_certificate["line_12_reads_tilde_u_k_minus_1"]
+            and not source_certificate["initializes_outer_tilde_u0"]
+            and not source_certificate["exact_printed_algorithm_is_defined_at_k1"]
+        ),
+        "natural_literal_completion_misses_0.001": literal_high_accuracy is not None
+        and literal_high_accuracy["hits"]["0.001"] is None,
     }
     return {
         "claim_verdict": "VERIFIED",
@@ -261,6 +361,22 @@ def run_round3() -> dict:
         },
         "selected_first_hits": selected,
         "grid_rows": rows,
+        "high_accuracy_source_audited_route": {
+            "protocol": {
+                "nodes": 12,
+                "dimension": high_accuracy_rows[0]["assumption_audit"]["dimension"],
+                "outer_budget": HIGH_ACCURACY_OUTER_BUDGET,
+                "inner_budgets": HIGH_ACCURACY_INNER_BUDGETS,
+                "penalties": HIGH_ACCURACY_PENALTIES,
+                "tolerances": HIGH_ACCURACY_TOLERANCES,
+                "grid_cells": len(high_accuracy_rows),
+                "selection": "formula-independent geometric grid; select observed first hit by matrix actions then subgradient calls",
+            },
+            "selected_first_hits": high_accuracy_selected,
+            "grid_rows": high_accuracy_rows,
+            "algorithm2_source_certificate": source_certificate,
+            "natural_literal_completion": literal_high_accuracy,
+        },
         "negative_controls": {
             "omitted_nonsmooth_subgradient": omitted_subgradient,
             "omitted_constraint_operator": no_constraint_operator,
@@ -275,5 +391,6 @@ def run_round3() -> dict:
             "The resource study is a finite calibrated sweep, not a proof of the universal epsilon exponents.",
             "The nonsmooth objective is a weighted L1 loss on a bounded box, satisfying the paper's bounded-subgradient assumption exactly.",
             "The paper's line 12 differs from Lan's canonical outer-average recurrence. Appendix E invokes Lan's theorem, so the canonical recurrence is used for acceptance; the unresolved textual discrepancy limits confidence to MEDIUM.",
+            "The authoritative TeX also leaves outer-sequence tilde u^0 undefined. The literal control supplies only the natural initialization tilde u^0 := u^0; this completion is disclosed and is not silently treated as the printed algorithm.",
         ],
     }
