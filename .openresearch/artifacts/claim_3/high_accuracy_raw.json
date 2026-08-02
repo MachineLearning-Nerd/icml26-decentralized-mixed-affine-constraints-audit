@@ -1,0 +1,185 @@
+{
+  "source_run": "15a485b2-6051-44ef-9443-9bd1b430f18c",
+  "source_git_sha": "47452809998f3a253a6ed67fba602f60004a05c8",
+  "compute": {
+    "backend": "huggingface",
+    "flavor": "cpu-upgrade",
+    "estimated_cores": 16,
+    "actual_logical_cpus": 64,
+    "gpu": false,
+    "fixed_command": "uv sync --frozen && uv run --frozen python reproduce.py"
+  },
+  "evidence": {
+    "algorithm2_source_certificate": {
+      "exact_printed_algorithm_is_defined_at_k1": false,
+      "full_main_tex_sha256": "8f7b09d693b6dca3d06a8e2b3e31e4e0bf32a744ad117d0976968a079f4e55d4",
+      "initializes_bar_u0": true,
+      "initializes_outer_tilde_u0": false,
+      "line_12_reads_tilde_u_k_minus_1": true,
+      "natural_completion_used_by_literal_control": "\\tilde{u}^0 := u^0",
+      "source": ".openresearch/sources/arxiv_2602.04479_algorithm2.tex",
+      "source_consistent_correction": "\\overline{u}^k := \\gamma_k\\tilde{u}^k + (1-\\gamma_k)\\overline{u}^{k-1}",
+      "source_tar_sha256": "5f481911add79c8eaa45b946bb0d9a4cb29df256b68fc7d894eb492e2476f4aa"
+    },
+    "natural_literal_completion": {
+      "assumption_audit": {
+        "bounded_subgradient_holds": true,
+        "dimension": 70,
+        "domain": "[-1,1]^d",
+        "exact_subgradient_norm_bound": 0.6974349137641433,
+        "maximum_observed_subgradient_norm": 0.6974349137641433,
+        "rhs_in_range": true
+      },
+      "final_constraint_residual": 23.918190879906827,
+      "final_objective_gap_absolute": 2.8318927033577967,
+      "hits": {"0.001": null, "0.005": null, "0.01": null},
+      "independent_lp": {
+        "equality_residual": 2.465965062201661e-14,
+        "objective": 2.701368292569767,
+        "objective_recalculation_error": 4.440892098500626e-16
+      },
+      "inner_budget": 64,
+      "interpretation": "literal_paper_line_12",
+      "matrix_actions": 16384,
+      "nodes": 12,
+      "outer_budget": 8192,
+      "penalty": 512.0,
+      "subgradient_calls": 524288
+    },
+    "protocol": {
+      "dimension": 70,
+      "grid_cells": 12,
+      "inner_budgets": [64, 128, 256],
+      "nodes": 12,
+      "outer_budget": 8192,
+      "penalties": [64.0, 128.0, 256.0, 512.0],
+      "selection": "formula-independent geometric grid; select observed first hit by matrix actions then subgradient calls",
+      "tolerances": [0.01, 0.005, 0.001]
+    },
+    "selected_first_hits": {
+      "0.001": {
+        "assumption_audit": {
+          "bounded_subgradient_holds": true,
+          "dimension": 70,
+          "domain": "[-1,1]^d",
+          "exact_subgradient_norm_bound": 0.6974349137641433,
+          "maximum_observed_subgradient_norm": 0.6974349137641433,
+          "rhs_in_range": true
+        },
+        "final_constraint_residual": 0.0009448107567162573,
+        "final_objective_gap_absolute": 0.00014578924138852756,
+        "hits": {
+          "0.001": {
+            "constraint_residual": 0.0009450381974171457,
+            "matrix_actions": 5502,
+            "objective_gap_absolute": 0.0009989586957570573,
+            "outer_iterations": 2751,
+            "subgradient_calls": 176064
+          },
+          "0.005": {
+            "constraint_residual": 0.0009445262884799801,
+            "matrix_actions": 2848,
+            "objective_gap_absolute": 0.004998588647694202,
+            "outer_iterations": 1424,
+            "subgradient_calls": 91136
+          },
+          "0.01": {
+            "constraint_residual": 0.0009493464482711969,
+            "matrix_actions": 1988,
+            "objective_gap_absolute": 0.009997701660632519,
+            "outer_iterations": 994,
+            "subgradient_calls": 63616
+          }
+        },
+        "independent_lp": {
+          "equality_residual": 2.465965062201661e-14,
+          "objective": 2.701368292569767,
+          "objective_recalculation_error": 4.440892098500626e-16
+        },
+        "inner_budget": 64,
+        "interpretation": "lan_canonical",
+        "matrix_actions": 16384,
+        "nodes": 12,
+        "outer_budget": 8192,
+        "penalty": 512.0,
+        "subgradient_calls": 524288
+      },
+      "0.005": {
+        "assumption_audit": {
+          "bounded_subgradient_holds": true,
+          "dimension": 70,
+          "domain": "[-1,1]^d",
+          "exact_subgradient_norm_bound": 0.6974349137641433,
+          "maximum_observed_subgradient_norm": 0.6974349137641433,
+          "rhs_in_range": true
+        },
+        "final_constraint_residual": 0.0037730894999851742,
+        "final_objective_gap_absolute": 0.0010566345442271086,
+        "hits": {
+          "0.001": null,
+          "0.005": {
+            "constraint_residual": 0.0037961975634997988,
+            "matrix_actions": 1268,
+            "objective_gap_absolute": 0.00499692708546462,
+            "outer_iterations": 634,
+            "subgradient_calls": 40576
+          },
+          "0.01": {
+            "constraint_residual": 0.0037997688358477827,
+            "matrix_actions": 932,
+            "objective_gap_absolute": 0.009958105666797223,
+            "outer_iterations": 466,
+            "subgradient_calls": 29824
+          }
+        },
+        "independent_lp": {
+          "equality_residual": 2.465965062201661e-14,
+          "objective": 2.701368292569767,
+          "objective_recalculation_error": 4.440892098500626e-16
+        },
+        "inner_budget": 64,
+        "interpretation": "lan_canonical",
+        "matrix_actions": 16384,
+        "nodes": 12,
+        "outer_budget": 8192,
+        "penalty": 128.0,
+        "subgradient_calls": 524288
+      },
+      "0.01": {
+        "assumption_audit": {
+          "bounded_subgradient_holds": true,
+          "dimension": 70,
+          "domain": "[-1,1]^d",
+          "exact_subgradient_norm_bound": 0.6974349137641433,
+          "maximum_observed_subgradient_norm": 0.6974349137641433,
+          "rhs_in_range": true
+        },
+        "final_constraint_residual": 0.0075373063275801485,
+        "final_objective_gap_absolute": 0.0024491772014458846,
+        "hits": {
+          "0.001": null,
+          "0.005": null,
+          "0.01": {
+            "constraint_residual": 0.007570512538829815,
+            "matrix_actions": 610,
+            "objective_gap_absolute": 0.009944992559129506,
+            "outer_iterations": 305,
+            "subgradient_calls": 19520
+          }
+        },
+        "independent_lp": {
+          "equality_residual": 2.465965062201661e-14,
+          "objective": 2.701368292569767,
+          "objective_recalculation_error": 4.440892098500626e-16
+        },
+        "inner_budget": 64,
+        "interpretation": "lan_canonical",
+        "matrix_actions": 16384,
+        "nodes": 12,
+        "outer_budget": 8192,
+        "penalty": 64.0,
+        "subgradient_calls": 524288
+      }
+    }
+  }
+}

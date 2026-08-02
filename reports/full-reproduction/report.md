@@ -43,11 +43,11 @@ Verdict: **Claim 2 VERIFIED (MEDIUM)**. The sweep corroborates, but does not uni
 
 ![Gradient Sliding first-hit work](images/gradient_sliding.svg)
 
-The nonsmooth experiment uses weighted L1 loss on `[-1,1]^22`, a full mixed affine matrix, the exact equation-(7) clipped minimizer, and an independent linear-program oracle. Budgets come from a calibrated grid rather than the theorem formula. The 0.01 target is first reached in 140 outer evaluations, 280 matrix actions, and 8,960 subgradient calls; the objective gap is 0.009953 and feasibility residual 0.009023.
+The strengthened nonsmooth experiment uses weighted L1 loss on `[-1,1]^70`, a full mixed affine matrix over 12 graph nodes, the exact equation-(7) clipped minimizer, and an independent linear-program oracle. Budgets come from a 12-cell geometric grid rather than the theorem formula. Joint accuracy 0.001 is first reached in 2,751 outer evaluations, 5,502 matrix actions, and 176,064 subgradient calls; the objective gap is 0.000998959 and feasibility residual 0.000945038.
 
-Omitting the nonsmooth subgradient leaves gap 0.02754. Omitting the constraint operator leaves residual 4.5747. More importantly, paper Algorithm 2 line 12 averages with the previous inner average, while the Lan recurrence invoked by Appendix E uses the previous outer average. The exact printed route becomes unstable and ends at residual 11.710; the source-consistent Lan route passes.
+Omitting the nonsmooth subgradient leaves gap 0.02754. Omitting the constraint operator leaves residual 4.5747. More importantly, the exact arXiv TeX initializes only `bar u^0` but line 12 reads undefined outer `tilde u^0` at the first iteration. Supplying only the natural missing initialization produces no hit even at 0.01 through 8,192 outer iterations and ends at residual 23.9182. The Lan recurrence invoked by Appendix E is defined and passes.
 
-Verdict: **Claim 3 VERIFIED (MEDIUM)**. The textual discrepancy is visible, not silently patched, and finite evidence does not prove universal epsilon exponents.
+Verdict: **Claim 3 VERIFIED (MEDIUM)**. The source defect is machine-certified rather than silently patched; the 70-dimensional `0.001` route substantially strengthens finite corroboration but does not prove universal epsilon exponents.
 
 ## Claim 4: the constraints train real models
 

@@ -39,6 +39,28 @@ def close(left, right, tolerance: float = 1e-12) -> bool:
 
 def validate_embedded_evidence(round1: dict, round2: dict, round3: dict, round4: dict) -> dict:
     raw1, raw2, raw3, raw4, raw5 = [load_claim(index) for index in range(1, 6)]
+    high_accuracy_raw = json.loads(
+        (ROOT / ".openresearch/artifacts/claim_3/high_accuracy_raw.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    high_accuracy_checker = json.loads(
+        (ROOT / ".openresearch/artifacts/claim_3/high_accuracy_checker_output.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    high_accuracy_control = json.loads(
+        (ROOT / ".openresearch/artifacts/claim_3/high_accuracy_negative_control_output.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    high_accuracy = round3["high_accuracy_source_audited_route"]
+    regenerated_high_accuracy = {
+        "protocol": high_accuracy["protocol"],
+        "selected_first_hits": high_accuracy["selected_first_hits"],
+        "algorithm2_source_certificate": high_accuracy["algorithm2_source_certificate"],
+        "natural_literal_completion": high_accuracy["natural_literal_completion"],
+    }
     return {
         "all_five_claim_raw_files_parse": all(
             isinstance(value, dict) for value in (raw1, raw2, raw3, raw4, raw5)
@@ -51,6 +73,39 @@ def validate_embedded_evidence(round1: dict, round2: dict, round3: dict, round4:
         ),
         "claim3_first_hits_regenerate_exactly": close(
             raw3["selected_first_hits"], round3["selected_first_hits"]
+        ),
+        "claim3_high_accuracy_evidence_regenerates_exactly": close(
+            high_accuracy_raw["evidence"], regenerated_high_accuracy
+        ),
+        "claim3_high_accuracy_checker_matches_first_hit": close(
+            high_accuracy_checker["first_hit_0.001"],
+            {
+                "dimension": high_accuracy["protocol"]["dimension"],
+                **high_accuracy["selected_first_hits"]["0.001"]["hits"]["0.001"],
+                "independent_lp_equality_residual": high_accuracy[
+                    "selected_first_hits"
+                ]["0.001"]["independent_lp"]["equality_residual"],
+            },
+        ),
+        "claim3_high_accuracy_control_regenerates_exactly": close(
+            {
+                "hits": high_accuracy_control["hits"],
+                "final_objective_gap_absolute": high_accuracy_control[
+                    "final_objective_gap_absolute"
+                ],
+                "final_constraint_residual": high_accuracy_control[
+                    "final_constraint_residual"
+                ],
+            },
+            {
+                "hits": high_accuracy["natural_literal_completion"]["hits"],
+                "final_objective_gap_absolute": high_accuracy[
+                    "natural_literal_completion"
+                ]["final_objective_gap_absolute"],
+                "final_constraint_residual": high_accuracy[
+                    "natural_literal_completion"
+                ]["final_constraint_residual"],
+            },
         ),
         "claim4_summaries_regenerate_exactly": close(
             raw4["summaries"], round4["summaries"]

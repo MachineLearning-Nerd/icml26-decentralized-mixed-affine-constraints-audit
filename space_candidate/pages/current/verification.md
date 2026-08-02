@@ -8,9 +8,9 @@ uv sync --frozen && uv run --frozen python reproduce.py
 
 The command exits nonzero if any scientific, control, embedded-evidence, figure, report-link, or notebook gate fails. The pinned environment is `pyproject.toml` plus `uv.lock`. Executable files are [reproduce.py](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/reproduce.py) and [research/](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/tree/main/research).
 
-Latest frozen scientific release evidence: Git SHA `050227ad5b4f72ef3c5c5bd8c563d2da6ab43f44`, run `05a428a4-0570-4cef-954a-6c421fdf20d8`, HF `cpu-upgrade`, 16 cores estimated, 64 logical CPUs observed, 44.6086 s verifier runtime, 86/86 gates true. The exact payload was published at Space revision `cf6997e179e72435d967de1d26ef51a924ceff91`; a fresh post-publication download matched every payload hash, every protected non-logbook hash, every canonical page, and every displayed headline number against raw JSON.
+The current live release is Space revision `cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe`, judged 9/10. Its status-correction run `8a7754ad-13b6-47ff-9b06-90fcdad7df73` at Git SHA `e7ecf1f2e10343f886b07c4a23fdc7fff87bd47c` passed 87/87 gates on HF `cpu-upgrade` with 16 cores estimated, 64 logical CPUs observed, and no GPU.
 
-This page supersedes stale pre-publication wording in that first published revision. The correction changes status/provenance text only; the same fixed command, lock, algorithms, raw data, and scientific gates are retained and rerun before the correction can be uploaded.
+The targeted Claim 3 source run `15a485b2-6051-44ef-9443-9bd1b430f18c` at `47452809998f3a253a6ed67fba602f60004a05c8` generated the 70-dimensional `0.001` evidence and exact-TeX certificate. It reached the scientific target; its wrapper exited nonzero solely because these newly generated artifacts had not yet been materialized into the inherited release manifest. The current candidate materializes those artifacts and must rerun this same fixed command before any upload.
 
 Environment versions observed: Python 3.12.12, NumPy 2.3.2, SciPy 1.16.1. GPU allowed: `false`.
 

@@ -154,11 +154,10 @@ def run_gradient_sliding(arguments: tuple) -> dict:
                     "constraint_residual": residual,
                 }
             )
-    return {
+    result = {
         "outer_budget": outer_budget,
         "inner_budget": inner_budget,
         "penalty": penalty,
-        "nodes": nodes,
         "interpretation": interpretation,
         "hits": hits,
         "final_objective_gap_absolute": gap,
@@ -179,6 +178,9 @@ def run_gradient_sliding(arguments: tuple) -> dict:
             "objective_recalculation_error": problem["lp_objective_recalculation_error"],
         },
     }
+    if options:
+        result["nodes"] = nodes
+    return result
 
 
 def select_high_accuracy(rows: list[dict]) -> dict[str, dict | None]:
