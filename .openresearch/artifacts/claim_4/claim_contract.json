@@ -1,0 +1,12 @@
+{
+  "claim_id": "C4",
+  "verdict_target": "VERIFIED (MEDIUM confidence)",
+  "source": "Section 1 equations (4) and VFL formulation; Appendix B distributed MTL",
+  "contract": [
+    "Train actual held-out learning problems, not merely inspect matrix rows.",
+    "For HFL, enforce sample-partitioned model consensus and match a centralized ridge oracle.",
+    "For VFL, enforce feature-party representation equations and replicated top-model consensus and match a centralized oracle.",
+    "For MTL, implement per-feature group regularization and explicit coupled y definitions; audit the separately labeled node-specific affine extension.",
+    "Use eight deterministic seeds, 95% intervals, structural/KKT checkers, and omission controls."
+  ]
+}
