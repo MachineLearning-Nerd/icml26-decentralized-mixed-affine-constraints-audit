@@ -160,7 +160,7 @@ def controls_figure(round1: dict, round2: dict, round3: dict, round4: dict) -> s
     control = round1["negative_controls"]["omitted_corrector"]
     values = (
         ("APAPC omitted corrector", hard["hits"]["1e-06"]["iterations"], control["hits"]["1e-06"]["iterations"]),
-        ("Mixed dropped shared", round2["hard_case"]["final_relative_residual"], round2["negative_controls"]["dropped_shared"]["final_relative_residual"]),
+        ("Mixed dropped shared", round2["hard_case"]["final_relative_residual"], round2["negative_controls"]["drop_shared"]["final_relative_residual"]),
         ("GS printed line 12", round3["selected_first_hits"]["0.01"]["hits"]["0.01"]["constraint_residual"], round3["line_12_interpretation_audit"]["paper_literal"]["final_constraint_residual"]),
         ("VFL omitted mapping", max(row["representation_residual"] for row in round4["vfl_rows"]), min(row["omitted_representation_constraint_residual"] for row in round4["vfl_rows"])),
     )
