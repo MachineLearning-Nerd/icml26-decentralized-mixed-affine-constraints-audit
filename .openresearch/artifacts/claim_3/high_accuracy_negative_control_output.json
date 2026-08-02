@@ -1,0 +1,24 @@
+{
+  "source_run": "15a485b2-6051-44ef-9443-9bd1b430f18c",
+  "control": "Exact printed line 12 with the sole natural completion tilde u^0 := u^0",
+  "source_defect": {
+    "initializes_bar_u0": true,
+    "initializes_outer_tilde_u0": false,
+    "line_12_reads_tilde_u_k_minus_1": true,
+    "exact_printed_algorithm_is_defined_at_k1": false,
+    "source_tar_sha256": "5f481911add79c8eaa45b946bb0d9a4cb29df256b68fc7d894eb492e2476f4aa"
+  },
+  "matched_budget": {
+    "nodes": 12,
+    "dimension": 70,
+    "outer_iterations": 8192,
+    "inner_budget": 64,
+    "penalty": 512.0,
+    "matrix_actions": 16384,
+    "subgradient_calls": 524288
+  },
+  "hits": {"0.01": null, "0.005": null, "0.001": null},
+  "final_objective_gap_absolute": 2.8318927033577967,
+  "final_constraint_residual": 23.918190879906827,
+  "control_fails_for_intended_reason": true
+}

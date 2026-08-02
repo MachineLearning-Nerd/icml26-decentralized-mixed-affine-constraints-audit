@@ -19,19 +19,21 @@
     "release hashes and historical subset proof were absent"
   ],
   "second_pass": "PASS",
-  "second_pass_files_opened": "All 73 paths in UPLOAD_ALLOWLIST.json and all 17 paths in HISTORICAL_MANIFEST.sha256; logbook.json is shared, so the fresh candidate contains 89 files.",
-  "second_pass_candidate_directory": "/tmp/orx-ks6-candidate.iUHud5/space",
+  "second_pass_files_opened": "All 77 paths in UPLOAD_ALLOWLIST.json and all 17 paths in HISTORICAL_MANIFEST.sha256; logbook.json is shared, so the fresh candidate contains 93 files.",
+  "second_pass_candidate_directory": "fresh exact-parent overlay reconstructed during the Claim 3 release audit",
   "second_pass_findings": {
-    "candidate_file_count": 89,
+    "candidate_file_count": 93,
     "reachable_logbook_pages": 16,
     "claim_pages": 5,
-    "evidence_links_per_claim": 9,
+    "evidence_links_per_claim": {"claim_1": 9, "claim_2": 9, "claim_3": 13, "claim_4": 9, "claim_5": 9},
     "upload_hashes_match": true,
     "historical_non_logbook_hashes_match": true,
     "unresolved_evidence_links": 0,
     "secret_matches": 0
   },
   "initial_published_revision": "cf6997e179e72435d967de1d26ef51a924ceff91",
+  "current_live_judged_revision": "cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe",
+  "current_live_score": "9/10",
   "post_publication_fresh_download": "PASS",
   "post_publication_checks": [
     "all 72 non-self payload hashes matched",

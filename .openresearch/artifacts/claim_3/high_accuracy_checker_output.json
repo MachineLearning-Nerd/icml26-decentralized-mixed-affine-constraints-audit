@@ -1,0 +1,26 @@
+{
+  "source_run": "15a485b2-6051-44ef-9443-9bd1b430f18c",
+  "source_git_sha": "47452809998f3a253a6ed67fba602f60004a05c8",
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM",
+  "checks": {
+    "dimension_at_least_64": true,
+    "joint_0.001_first_hit_exists": true,
+    "objective_gap_at_hit_below_0.001": true,
+    "constraint_residual_at_hit_below_0.001": true,
+    "independent_lp_equality_residual_below_1e-8": true,
+    "bounded_subgradient_assumption_holds": true,
+    "rhs_is_in_constraint_range": true,
+    "source_excerpt_exposes_undefined_outer_tilde_u0": true,
+    "natural_literal_completion_misses_0.001": true
+  },
+  "first_hit_0.001": {
+    "dimension": 70,
+    "outer_iterations": 2751,
+    "matrix_actions": 5502,
+    "subgradient_calls": 176064,
+    "objective_gap_absolute": 0.0009989586957570573,
+    "constraint_residual": 0.0009450381974171457,
+    "independent_lp_equality_residual": 2.465965062201661e-14
+  }
+}
