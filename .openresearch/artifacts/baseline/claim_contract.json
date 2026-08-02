@@ -1,0 +1,46 @@
+{
+  "source": {
+    "arxiv_id": "2602.04479v1",
+    "html_url": "https://ar5iv.labs.arxiv.org/html/2602.04479",
+    "html_sha256": "f7b9689819c04bee20e8ccc46e51e52d1fbc0c4d5dbb34eae3ac53cf9d2e647a",
+    "retrieved": "2026-08-02"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "source_anchor": "S4.Thmtheorem1 and Table 1",
+      "exact_scope": "Shared-variable constraints (problem 10), not the full mixed problem P; optimal communication complexity in a naturally defined decentralized first-order class.",
+      "baseline_verdict": "BLOCKED",
+      "reason": "No APAPC, communication counter, condition-factor sweep, or lower-bound certificate exists in the starting repository."
+    },
+    {
+      "id": "C2",
+      "source_anchor": "S4.Thmtheorem6 and Table 1",
+      "exact_scope": "Full mixed problem P with coupled, node-local, shared-variable, and consensus constraints.",
+      "baseline_verdict": "BLOCKED",
+      "reason": "No exact mixed reformulation, APAPC run, or measured condition-factor scaling exists in the starting repository."
+    },
+    {
+      "id": "C3",
+      "source_anchor": "S2.Thmtheorem4, alg2, and S5.Thmtheorem2",
+      "exact_scope": "Smooth APAPC and nonsmooth Gradient Sliding under their stated convexity and bounded-subgradient assumptions.",
+      "baseline_verdict": "BLOCKED",
+      "reason": "The starting repository contains neither Algorithm 1 nor Algorithm 2."
+    },
+    {
+      "id": "C4",
+      "source_anchor": "S1.SS0.SSS0.Px1, S1.SS0.SSS0.Px2, and Appendix B",
+      "exact_scope": "HFL, VFL, and distributed multi-task formulations embedded in problem P.",
+      "baseline_verdict": "BLOCKED",
+      "reason": "The starting repository contains no application experiment."
+    },
+    {
+      "id": "C5",
+      "source_anchor": "alg1, S4.Thmtheorem1, and S4.Thmtheorem5",
+      "exact_scope": "The exact APAPC predictor-corrector is the core method after the theorem-specific reformulations and preconditioners.",
+      "baseline_verdict": "BLOCKED",
+      "reason": "The starting repository contains no executable APAPC implementation or corrector control."
+    }
+  ]
+}
+
