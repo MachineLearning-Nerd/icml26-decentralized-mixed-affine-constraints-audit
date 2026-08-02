@@ -8,7 +8,7 @@ uv sync --frozen && uv run --frozen python reproduce.py
 
 The command exits nonzero if any scientific, control, embedded-evidence, figure, report-link, or notebook gate fails. The pinned environment is `pyproject.toml` plus `uv.lock`. Executable files are [reproduce.py](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/reproduce.py) and [research/](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/tree/main/research).
 
-Latest frozen cumulative evidence: Git SHA `495e488521643a1b44dc884fc64975a7e536ac1b`, run `4f12c980-815f-4f7f-bd9e-1c4b7d60f49c`, HF `cpu-upgrade`, 16 cores estimated, 64 logical CPUs observed, 44.3397 s scientific-verifier runtime, 65/65 gates true. The release child adds only navigation, manifests, and evaluator-blind checks, then reruns this cumulative suite.
+Latest frozen release evidence: Git SHA `a6706674d87a60903bda4e673aa99510a53895b7`, run `ff79d821-3983-471d-a808-02604e7b82f3`, HF `cpu-upgrade`, 16 cores estimated, 64 logical CPUs observed, 28.1083 s scientific-verifier runtime, 86/86 gates true. The final child changes only validated status text and payload hashes, then reruns this cumulative suite before publication.
 
 Environment versions observed: Python 3.12.12, NumPy 2.3.2, SciPy 1.16.1. GPU allowed: `false`.
 

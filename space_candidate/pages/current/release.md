@@ -18,7 +18,7 @@ Current total score: **5/10**. Conservative projected total: **8–10/10**. Best
 
 The stacked lineage is baseline → exact APAPC → full mixed APAPC → source-consistent Gradient Sliding → learning applications → cumulative figures → materialized report/Space → evaluator-blind release. One exact-text Gradient Sliding sibling is retained as a rejected interpretation because the printed line-12 recurrence becomes unstable.
 
-All jobs used Hugging Face `cpu-upgrade`, never GPU. Every node inherited exactly `uv sync --frozen && uv run --frozen python reproduce.py`. The campaign used 748 seconds of recorded HF job wall time before the final release run; the final total is reported after that run. The backend did not expose a monetary charge, so no unsupported cost estimate is invented.
+All jobs used Hugging Face `cpu-upgrade`, never GPU. Every node inherited exactly `uv sync --frozen && uv run --frozen python reproduce.py`. The campaign used 796 seconds of recorded HF job wall time before the final publication run, including the 86/86 blind-audit pass `ff79d821-3983-471d-a808-02604e7b82f3`; the final total is reported after that run. The backend did not expose a monetary charge, so no unsupported cost estimate is invented.
 
 ## Publication action
 
@@ -29,4 +29,4 @@ After the final release run passes, one text-only Hugging Face Hub commit will u
 - [Historical judged manifest](https://huggingface.co/spaces/DineshAI/KS6RbZMt8L/blob/main/current/release/HISTORICAL_MANIFEST.sha256)
 - [Evaluator-blind review](#/current-red-team)
 
-Publication status: **candidate; awaiting the final release-gate run**. Only the live judge can change the score.
+Publication status: **release-ready; the 86/86 evaluator-blind gate passed and one final hash-locked rerun precedes the upload**. After upload the paper is awaiting the live judge; only that judge can change the score.
