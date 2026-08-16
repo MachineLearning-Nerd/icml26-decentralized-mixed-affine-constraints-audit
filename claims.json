@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "conference_title": "Complexity of Decentralized Optimization with Mixed Affine Constraints",
+    "preprint_title": "Decentralized Optimization with Mixed Affine Constraints",
+    "arxiv": "2602.04479",
+    "openreview": "KS6RbZMt8L",
+    "authors": [
+      "Demyan Yarmoshik",
+      "Nhat Trung Nguyen",
+      "Alexander Rogozin",
+      "Alexander Gasnikov"
+    ]
+  },
+  "overall_status": "MIXED_RESULTS / RELEASE_REPLAY_DRIFT",
+  "claims": [
+    {
+      "id": "C1",
+      "anchor": "Theorem 4.1, Table 1, Appendix G",
+      "producer": "research/round1.py",
+      "status": "VERIFIED_SCOPED",
+      "evidence": [
+        ".openresearch/artifacts/claim_1/claim_contract.json",
+        ".openresearch/artifacts/claim_1/raw.json",
+        ".openresearch/artifacts/claim_1/checker_output.json",
+        ".openresearch/artifacts/claim_1/negative_control_output.json"
+      ],
+      "result": "27/27 stored cells reach 1e-6; hard case uses 213 iterations and 20448 communications."
+    },
+    {
+      "id": "C2",
+      "anchor": "Theorem 4.6, Table 1, Appendix J",
+      "producer": "research/round2.py",
+      "status": "VERIFIED_SCOPED_WITH_ARTIFACT_DRIFT",
+      "evidence": [
+        ".openresearch/artifacts/claim_2/claim_contract.json",
+        ".openresearch/artifacts/claim_2/raw.json",
+        ".openresearch/artifacts/claim_2/checker_output.json",
+        ".openresearch/artifacts/claim_2/negative_control_output.json"
+      ],
+      "result": "Stored additive relative RMSE 0.0601851046 versus multiplicative 0.2825164062; current model-comparison equality gate fails."
+    },
+    {
+      "id": "C3",
+      "anchor": "Algorithm 2, Theorems 2.5/5.2, Appendix E, Lan 2016 Corollary 1",
+      "producer": "research/round3.py",
+      "status": "VERIFIED_SCOPED_WITH_SOURCE_CAVEAT",
+      "evidence": [
+        ".openresearch/artifacts/claim_3/claim_contract.json",
+        ".openresearch/artifacts/claim_3/raw.json",
+        ".openresearch/artifacts/claim_3/checker_output.json",
+        ".openresearch/artifacts/claim_3/negative_control_output.json",
+        ".openresearch/artifacts/claim_3/high_accuracy_raw.json",
+        ".openresearch/artifacts/claim_3/high_accuracy_checker_output.json",
+        ".openresearch/artifacts/claim_3/high_accuracy_negative_control_output.json",
+        ".openresearch/sources/arxiv_2602.04479_algorithm2.tex"
+      ],
+      "result": "Stored 70D route reaches joint 0.001 at 5502 matrix actions and 176064 subgradient calls; printed line-12 state is undefined at k=1."
+    },
+    {
+      "id": "C4",
+      "anchor": "Section 1 equation (4), VFL formulation, Appendix B",
+      "producer": "research/round4.py",
+      "status": "VERIFIED_SCOPED_WITH_EXTENSION",
+      "evidence": [
+        ".openresearch/artifacts/claim_4/claim_contract.json",
+        ".openresearch/artifacts/claim_4/raw.json",
+        ".openresearch/artifacts/claim_4/checker_output.json",
+        ".openresearch/artifacts/claim_4/negative_control_output.json"
+      ],
+      "result": "Eight deterministic HFL/VFL/MTL seeds pass structural, KKT, centralized-oracle, and omission-control checks."
+    },
+    {
+      "id": "C5",
+      "anchor": "Algorithm 1, Theorems 4.1/4.5",
+      "producer": "research/round1.py (shared APAPC evidence)",
+      "status": "VERIFIED_SCOPED",
+      "evidence": [
+        ".openresearch/artifacts/claim_5/claim_contract.json",
+        ".openresearch/artifacts/claim_5/raw.json",
+        ".openresearch/artifacts/claim_5/checker_output.json",
+        ".openresearch/artifacts/claim_5/negative_control_output.json"
+      ],
+      "result": "Corrector route reaches the hard-case target in 213 iterations; omission control takes 359."
+    }
+  ]
+}

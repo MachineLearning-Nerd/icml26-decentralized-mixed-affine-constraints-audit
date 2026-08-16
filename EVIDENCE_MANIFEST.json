@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "repository": "MachineLearning-Nerd/icml26-decentralized-mixed-affine-constraints-audit",
+  "paper": {
+    "conference_title": "Complexity of Decentralized Optimization with Mixed Affine Constraints",
+    "preprint_title": "Decentralized Optimization with Mixed Affine Constraints",
+    "arxiv": "2602.04479",
+    "openreview": "KS6RbZMt8L",
+    "authors": [
+      "Demyan Yarmoshik",
+      "Nhat Trung Nguyen",
+      "Alexander Rogozin",
+      "Alexander Gasnikov"
+    ]
+  },
+  "overall_status": "MIXED_RESULTS / RELEASE_REPLAY_DRIFT",
+  "current_replay": {
+    "date": "2026-08-16",
+    "commit": "9df8a67a39819fa7588091be4590b30755f703a1",
+    "command": "uv sync --frozen && uv run --frozen python reproduce.py",
+    "total_gates": 96,
+    "passed_gates": 91,
+    "failed_gates": [
+      "embedded.claim2_model_comparison_regenerates_exactly",
+      "embedded.claim3_high_accuracy_evidence_regenerates_exactly",
+      "embedded.claim3_high_accuracy_checker_matches_first_hit",
+      "embedded.claim3_high_accuracy_control_regenerates_exactly",
+      "materialized.materialized_figures_equal_hf_generated_payloads"
+    ],
+    "interpretation": "Round-level scientific checks pass; five current equality gates expose drift between regenerated values and frozen publication payloads."
+  },
+  "historical_release": {
+    "source_branch": "orx/final-high-accuracy-claim-3-release",
+    "source_commit": "1e0d3b2b994986479c6985e3cfac5a6bc5f0e5cd",
+    "recorded_gates": "96/96",
+    "space": "DineshAI/KS6RbZMt8L",
+    "revision": "2d7aae33c177c464725dee5a8c4a4c5398f5e1a2",
+    "preceding_live_judged_revision": "cbf9ad1348a00e86543c9edf16c1c2fd1a275cbe",
+    "preceding_live_score": "9/10",
+    "interpretation": "Historical release and judge record only; no new score is claimed."
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "paper_anchor": "Theorem 4.1, Table 1, Appendix G",
+      "collection_status": "VERIFIED_SCOPED",
+      "stored_checker_verdict": "VERIFIED",
+      "evidence": [
+        ".openresearch/artifacts/claim_1/claim_contract.json",
+        ".openresearch/artifacts/claim_1/raw.json",
+        ".openresearch/artifacts/claim_1/checker_output.json",
+        ".openresearch/artifacts/claim_1/negative_control_output.json"
+      ]
+    },
+    {
+      "id": "C2",
+      "paper_anchor": "Theorem 4.6, Table 1, Appendix J",
+      "collection_status": "VERIFIED_SCOPED_WITH_ARTIFACT_DRIFT",
+      "stored_checker_verdict": "VERIFIED",
+      "evidence": [
+        ".openresearch/artifacts/claim_2/claim_contract.json",
+        ".openresearch/artifacts/claim_2/raw.json",
+        ".openresearch/artifacts/claim_2/checker_output.json",
+        ".openresearch/artifacts/claim_2/negative_control_output.json"
+      ]
+    },
+    {
+      "id": "C3",
+      "paper_anchor": "Algorithm 2, Theorems 2.5/5.2, Appendix E",
+      "collection_status": "VERIFIED_SCOPED_WITH_SOURCE_CAVEAT",
+      "stored_checker_verdict": "VERIFIED",
+      "evidence": [
+        ".openresearch/artifacts/claim_3/claim_contract.json",
+        ".openresearch/artifacts/claim_3/raw.json",
+        ".openresearch/artifacts/claim_3/checker_output.json",
+        ".openresearch/artifacts/claim_3/negative_control_output.json",
+        ".openresearch/artifacts/claim_3/high_accuracy_raw.json",
+        ".openresearch/artifacts/claim_3/high_accuracy_checker_output.json",
+        ".openresearch/artifacts/claim_3/high_accuracy_negative_control_output.json",
+        ".openresearch/sources/arxiv_2602.04479_algorithm2.tex"
+      ]
+    },
+    {
+      "id": "C4",
+      "paper_anchor": "Section 1 equation (4), VFL formulation, Appendix B",
+      "collection_status": "VERIFIED_SCOPED_WITH_EXTENSION",
+      "stored_checker_verdict": "VERIFIED",
+      "evidence": [
+        ".openresearch/artifacts/claim_4/claim_contract.json",
+        ".openresearch/artifacts/claim_4/raw.json",
+        ".openresearch/artifacts/claim_4/checker_output.json",
+        ".openresearch/artifacts/claim_4/negative_control_output.json"
+      ]
+    },
+    {
+      "id": "C5",
+      "paper_anchor": "Algorithm 1, Theorems 4.1/4.5",
+      "collection_status": "VERIFIED_SCOPED",
+      "stored_checker_verdict": "VERIFIED",
+      "evidence": [
+        ".openresearch/artifacts/claim_5/claim_contract.json",
+        ".openresearch/artifacts/claim_5/raw.json",
+        ".openresearch/artifacts/claim_5/checker_output.json",
+        ".openresearch/artifacts/claim_5/negative_control_output.json"
+      ]
+    }
+  ],
+  "branches": {
+    "expected_final_count": 18,
+    "legacy_prefixes_removed": ["orx/", "publication/"],
+    "mapping": "BRANCH_AUDIT.md"
+  },
+  "attribution": {
+    "name": "MachineLearning-Nerd",
+    "email": "MachineLearning-Nerd@users.noreply.github.com",
+    "coauthor_trailers_allowed": false
+  }
+}

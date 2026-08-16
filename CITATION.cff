@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "Complexity of Decentralized Optimization with Mixed Affine Constraints — ICML 2026 reproduction audit"
+message: "Please cite the paper and this repository when using the reproduction code or evidence."
+type: software
+authors:
+  - given-names: Dinesh
+    family-names: Jinjala
+    affiliation: MachineLearning-Nerd
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-decentralized-mixed-affine-constraints-audit"
+url: "https://github.com/MachineLearning-Nerd/icml26-decentralized-mixed-affine-constraints-audit"
+date-released: 2026-08-16
+preferred-citation:
+  type: article
+  title: "Complexity of Decentralized Optimization with Mixed Affine Constraints"
+  authors:
+    - given-names: Demyan
+      family-names: Yarmoshik
+    - given-names: Nhat Trung
+      family-names: Nguyen
+    - given-names: Alexander
+      family-names: Rogozin
+    - given-names: Alexander
+      family-names: Gasnikov
+  year: 2026
+  journal: "Proceedings of Machine Learning Research"
+  volume: 306
+  url: "https://openreview.net/forum?id=KS6RbZMt8L"
+  identifiers:
+    - type: doi
+      value: "10.48550/arXiv.2602.04479"
